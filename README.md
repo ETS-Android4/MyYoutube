@@ -1,5 +1,7 @@
 # BenimYoutube
  
+ 
+# APK İNDİRMEK İÇİN LİNK (Android 6.0+) -> https://github.com/madilekci/BenimYoutube/raw/master/app/production/release/Tube.apk
 Neredeyse bütün Youtube premium özelliklerini bedava kullanın.
 
 Uygulamadaki özellikler :
