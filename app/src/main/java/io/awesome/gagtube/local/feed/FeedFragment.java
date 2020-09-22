@@ -9,12 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdLoader;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.LoadAdError;
-import com.google.android.gms.ads.VideoOptions;
-import com.google.android.gms.ads.formats.NativeAdOptions;
 
 import org.jetbrains.annotations.NotNull;
 import org.reactivestreams.Subscriber;
@@ -38,9 +32,6 @@ import androidx.appcompat.widget.Toolbar;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.awesome.gagtube.R;
-import io.awesome.gagtube.adsmanager.AdUtils;
-import io.awesome.gagtube.adsmanager.nativead.NativeAdStyle;
-import io.awesome.gagtube.adsmanager.nativead.NativeAdView;
 import io.awesome.gagtube.database.subscription.SubscriptionEntity;
 import io.awesome.gagtube.fragments.list.BaseListFragment;
 import io.awesome.gagtube.local.subscription.SubscriptionService;
@@ -70,9 +61,7 @@ public class FeedFragment extends BaseListFragment<List<SubscriptionEntity>, Voi
 	private CompositeDisposable compositeDisposable = new CompositeDisposable();
 	private Disposable subscriptionObserver;
 	private Subscription feedSubscriber;
-	
-	// NativeAd
-	private NativeAdView nativeAdView;
+
 	
 	// Fragment LifeCycle
 	@Override
@@ -104,10 +93,7 @@ public class FeedFragment extends BaseListFragment<List<SubscriptionEntity>, Voi
 		
 		// for empty message
 		emptyMessage.setText(R.string.no_videos_found);
-		
-		View headerRootLayout = activity.getLayoutInflater().inflate(R.layout.native_ad_list_header, itemsList, false);
-		nativeAdView = headerRootLayout.findViewById(R.id.template_view);
-		infoListAdapter.setHeader(headerRootLayout);
+
 	}
 	
 	@Override
@@ -122,19 +108,12 @@ public class FeedFragment extends BaseListFragment<List<SubscriptionEntity>, Voi
 	public void onResume() {
 		
 		super.onResume();
-		// show ad
-		showNativeAd();
+
 		if (wasLoading.get()) doInitialLoadLogic();
 	}
 	
 	@Override
 	public void onDestroy() {
-		
-		// destroy ad
-		if (nativeAdView != null) {
-			nativeAdView.destroyNativeAd();
-		}
-		
 		super.onDestroy();
 		
 		disposeEverything();
@@ -475,43 +454,5 @@ public class FeedFragment extends BaseListFragment<List<SubscriptionEntity>, Voi
 		return true;
 	}
 	
-	private void showNativeAd() {
-		
-		// ad options
-		VideoOptions videoOptions = new VideoOptions.Builder()
-				.setStartMuted(true)
-				.build();
-		
-		NativeAdOptions adOptions = new NativeAdOptions.Builder()
-				.setVideoOptions(videoOptions)
-				.build();
-		
-		AdLoader adLoader = new AdLoader.Builder(activity, AdUtils.getNativeAdId(activity))
-				.forUnifiedNativeAd(unifiedNativeAd -> {
-					
-					// show the ad
-					NativeAdStyle styles = new NativeAdStyle.Builder().build();
-					nativeAdView.setStyles(styles);
-					nativeAdView.setNativeAd(unifiedNativeAd);
-				})
-				.withAdListener(new AdListener() {
-					
-					@Override
-					public void onAdFailedToLoad(LoadAdError loadAdError) {
-						super.onAdFailedToLoad(loadAdError);
-					}
-					
-					@Override
-					public void onAdLoaded() {
-						
-						super.onAdLoaded();
-					}
-				})
-				.withNativeAdOptions(adOptions)
-				.build();
-		
-		// loadAd
-		AdRequest.Builder builder = new AdRequest.Builder();
-		adLoader.loadAd(builder.build());
-	}
+
 }

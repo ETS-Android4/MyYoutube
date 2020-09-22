@@ -9,12 +9,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.annimon.stream.Stream;
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdLoader;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.LoadAdError;
-import com.google.android.gms.ads.VideoOptions;
-import com.google.android.gms.ads.formats.NativeAdOptions;
+
 
 import org.schabi.newpipe.extractor.stream.StreamInfoItem;
 import org.schabi.newpipe.extractor.stream.StreamType;
@@ -32,10 +27,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import io.awesome.gagtube.R;
-import io.awesome.gagtube.adsmanager.AdUtils;
-import io.awesome.gagtube.adsmanager.AppInterstitialAd;
-import io.awesome.gagtube.adsmanager.nativead.NativeAdStyle;
-import io.awesome.gagtube.adsmanager.nativead.NativeAdView;
 import io.awesome.gagtube.base.BaseFragment;
 import io.awesome.gagtube.fragments.discover.adapter.VideoListAdapter;
 import io.awesome.gagtube.fragments.discover.model.VideoListResponse;
@@ -56,8 +47,7 @@ public class TopFragment extends BaseFragment implements VideoListAdapter.Listen
 	@BindView(R.id.error_panel) View errorView;
 	@BindView(R.id.error_message_view) TextView errorMessageView;
 	
-	// NativeAd
-	private NativeAdView nativeAdView;
+
 	
 	private VideoListAdapter adapter;
 	private int categoryId;
@@ -81,8 +71,6 @@ public class TopFragment extends BaseFragment implements VideoListAdapter.Listen
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		init();
-		// init InterstitialAd
-		AppInterstitialAd.getInstance().init(activity);
 	}
 	
 	private void init() {
@@ -97,10 +85,7 @@ public class TopFragment extends BaseFragment implements VideoListAdapter.Listen
 		// LinearLayoutManager
 		recyclerView.setLayoutManager(new LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false));
 		recyclerView.setAdapter(adapter);
-		
-		View headerView = getLayoutInflater().inflate(R.layout.native_ad_list_header, recyclerView, false);
-		nativeAdView = headerView.findViewById(R.id.template_view);
-		adapter.setHeader(headerView);
+
 	}
 	
 	@Nullable
@@ -116,8 +101,7 @@ public class TopFragment extends BaseFragment implements VideoListAdapter.Listen
 	@Override
 	protected void initViews(View rootView, Bundle savedInstanceState) {
 		super.initViews(rootView, savedInstanceState);
-		// show ad
-		showNativeAd();
+
 		
 		initRecyclerView();
 		getVideos();
@@ -188,21 +172,19 @@ public class TopFragment extends BaseFragment implements VideoListAdapter.Listen
 	
 	public void playAll() {
 		if (!adapter.getItems().isEmpty()) {
-			AppInterstitialAd.getInstance().showInterstitialAd(() -> NavigationHelper.playOnPopupPlayer(activity, getPlayQueue()));
+			 NavigationHelper.playOnPopupPlayer(activity, getPlayQueue() );
 		}
 	}
 	
 	@Override
 	public void onVideoClicked(int position) {
-		AppInterstitialAd.getInstance().showInterstitialAd(() -> {
-			VideoListResponse.Item item = adapter.getItem(position);
-			StreamInfoItem streamInfoItem = new StreamInfoItem(Constants.YOUTUBE_SERVICE_ID, Constants.VIDEO_BASE_URL + item.getId(), item.getSnippet().getTitle(), StreamType.VIDEO_STREAM);
-			// need to set thumbnail url here
-			streamInfoItem.setThumbnailUrl(item.getSnippet().getThumbnails().getThumbnailUrl());
-			streamInfoItem.setUploaderName(item.getSnippet().getChannelTitle());
+		VideoListResponse.Item item = adapter.getItem(position);
+		StreamInfoItem streamInfoItem = new StreamInfoItem(Constants.YOUTUBE_SERVICE_ID, Constants.VIDEO_BASE_URL + item.getId(), item.getSnippet().getTitle(), StreamType.VIDEO_STREAM);
+		// need to set thumbnail url here
+		streamInfoItem.setThumbnailUrl(item.getSnippet().getThumbnails().getThumbnailUrl());
+		streamInfoItem.setUploaderName(item.getSnippet().getChannelTitle());
 
-			NavigationHelper.openVideoDetailFragment(streamInfoItem, activity.getSupportFragmentManager(), streamInfoItem.getServiceId(), streamInfoItem.getUrl(), streamInfoItem.getName());
-		});
+		NavigationHelper.openVideoDetailFragment(streamInfoItem, activity.getSupportFragmentManager(), streamInfoItem.getServiceId(), streamInfoItem.getUrl(), streamInfoItem.getName());
 	}
 	
 	@Override
@@ -228,7 +210,7 @@ public class TopFragment extends BaseFragment implements VideoListAdapter.Listen
 			switch (item.getItemId()) {
 				
 				case R.id.action_play:
-					AppInterstitialAd.getInstance().showInterstitialAd(() -> NavigationHelper.playOnMainPlayer(activity, new SinglePlayQueue(Collections.singletonList(infoItem), 0)));
+					 NavigationHelper.playOnMainPlayer(activity, new SinglePlayQueue(Collections.singletonList(infoItem), 0) );
 					break;
 				
 				case R.id.action_append_playlist:
@@ -242,46 +224,7 @@ public class TopFragment extends BaseFragment implements VideoListAdapter.Listen
 			return true;
 		});
 	}
-	
-	private void showNativeAd() {
-		
-		// ad options
-		VideoOptions videoOptions = new VideoOptions.Builder()
-				.setStartMuted(true)
-				.build();
-		
-		NativeAdOptions adOptions = new NativeAdOptions.Builder()
-				.setVideoOptions(videoOptions)
-				.build();
-		
-		AdLoader adLoader = new AdLoader.Builder(activity, AdUtils.getNativeAdId(activity))
-				.forUnifiedNativeAd(unifiedNativeAd -> {
-					
-					// show the ad
-					NativeAdStyle styles = new NativeAdStyle.Builder().build();
-					nativeAdView.setStyles(styles);
-					nativeAdView.setNativeAd(unifiedNativeAd);
-				})
-				.withAdListener(new AdListener() {
-					
-					@Override
-					public void onAdFailedToLoad(LoadAdError loadAdError) {
-						super.onAdFailedToLoad(loadAdError);
-					}
-					
-					@Override
-					public void onAdLoaded() {
-						
-						super.onAdLoaded();
-					}
-				})
-				.withNativeAdOptions(adOptions)
-				.build();
-		
-		// loadAd
-		AdRequest.Builder builder = new AdRequest.Builder();
-		adLoader.loadAd(builder.build());
-	}
+
 	
 	@Override
 	public void onDestroyView() {

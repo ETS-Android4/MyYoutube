@@ -9,13 +9,6 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.annimon.stream.Stream;
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdLoader;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.LoadAdError;
-import com.google.android.gms.ads.VideoOptions;
-import com.google.android.gms.ads.formats.NativeAdOptions;
-import com.google.android.gms.ads.formats.UnifiedNativeAd;
 
 import org.schabi.newpipe.extractor.stream.StreamInfoItem;
 import org.schabi.newpipe.extractor.stream.StreamType;
@@ -34,8 +27,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import io.awesome.gagtube.R;
-import io.awesome.gagtube.adsmanager.AdUtils;
-import io.awesome.gagtube.adsmanager.AppInterstitialAd;
 import io.awesome.gagtube.base.BaseFragment;
 import io.awesome.gagtube.fragments.discover.adapter.VideoListAdapter2;
 import io.awesome.gagtube.fragments.discover.model.VideoListResponse;
@@ -60,14 +51,10 @@ public class TopFragment2 extends BaseFragment implements VideoListAdapter2.List
 	private int categoryId;
 	private String categoryName;
 	
-	// The AdLoader used to load ads.
-	private AdLoader adLoader;
-	// The number of native ads to load
-	public static final int NUMBER_OF_ADS = 5;
-	// List of videos and native ads that populate the RecyclerView
+
+
 	private List<Object> recyclerViewItems = new ArrayList<>();
-	// List of native ads that have been successfully loaded
-	private List<UnifiedNativeAd> mNativeAds = new ArrayList<>();
+
 	
 	public TopFragment2() {
 	}
@@ -87,8 +74,6 @@ public class TopFragment2 extends BaseFragment implements VideoListAdapter2.List
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		init();
-		// init InterstitialAd
-		AppInterstitialAd.getInstance().init(activity);
 	}
 	
 	private void init() {
@@ -125,7 +110,6 @@ public class TopFragment2 extends BaseFragment implements VideoListAdapter2.List
 	private void getVideos() {
 		
 		// Removes all of RecyclerView item's before adding
-		mNativeAds.clear();
 		recyclerViewItems.clear();
 		
 		Random random = new Random();
@@ -145,9 +129,7 @@ public class TopFragment2 extends BaseFragment implements VideoListAdapter2.List
 					// Update the RecyclerView item's list with videos.
 					recyclerViewItems.addAll(videoListResponse.getItems());
 					adapter.setRecyclerViewItems(recyclerViewItems);
-					// Update the RecyclerView item's list with native ads.
-					loadNativeAds();
-					
+
 					// show emptyView if empty
 					emptyView.setVisibility(recyclerViewItems.isEmpty() ? View.VISIBLE : View.GONE);
 					recyclerView.setVisibility(recyclerViewItems.isEmpty() ? View.GONE : View.VISIBLE);
@@ -162,18 +144,7 @@ public class TopFragment2 extends BaseFragment implements VideoListAdapter2.List
 				});
 	}
 	
-	private void insertAdsInVideos() {
-		if (mNativeAds.size() <= 0) {
-			return;
-		}
-		
-		int offset = (recyclerViewItems.size() / mNativeAds.size()) + 1;
-		int index = 0;
-		for (UnifiedNativeAd ad : mNativeAds) {
-			recyclerViewItems.add(index, ad);
-			index = index + offset;
-		}
-	}
+
 	
 	private void setProgressVisible(boolean progressVisible) {
 		errorView.setVisibility(View.GONE);
@@ -209,7 +180,7 @@ public class TopFragment2 extends BaseFragment implements VideoListAdapter2.List
 	
 	public void playAll() {
 		if (!adapter.getRecyclerViewItems().isEmpty()) {
-			AppInterstitialAd.getInstance().showInterstitialAd(() -> NavigationHelper.playOnPopupPlayer(activity, getPlayQueue()));
+			NavigationHelper.playOnPopupPlayer(activity, getPlayQueue() );
 		}
 	}
 	
@@ -249,7 +220,7 @@ public class TopFragment2 extends BaseFragment implements VideoListAdapter2.List
 			switch (item.getItemId()) {
 				
 				case R.id.action_play:
-					AppInterstitialAd.getInstance().showInterstitialAd(() -> NavigationHelper.playOnMainPlayer(activity, new SinglePlayQueue(Collections.singletonList(infoItem), 0)));
+					NavigationHelper.playOnMainPlayer(activity, new SinglePlayQueue(Collections.singletonList(infoItem), 0) );
 					break;
 				
 				case R.id.action_append_playlist:
@@ -263,39 +234,7 @@ public class TopFragment2 extends BaseFragment implements VideoListAdapter2.List
 			return true;
 		});
 	}
-	
-	private void loadNativeAds() {
-		
-		// ad options
-		VideoOptions videoOptions = new VideoOptions.Builder()
-				.setStartMuted(true)
-				.build();
-		
-		NativeAdOptions adOptions = new NativeAdOptions.Builder()
-				.setVideoOptions(videoOptions)
-				.build();
-		
-		AdLoader.Builder builder = new AdLoader.Builder(activity, AdUtils.getNativeAdId(activity));
-		adLoader = builder.forUnifiedNativeAd(unifiedNativeAd -> {
-			// A native ad loaded successfully, check if the ad loader has finished loading
-			// and if so, insert the ads into the list.
-			mNativeAds.add(unifiedNativeAd);
-			if (!adLoader.isLoading()) {
-				insertAdsInVideos();
-			}
-		}).withAdListener(new AdListener() {
-			@Override
-			public void onAdFailedToLoad(LoadAdError loadAdError) {
-				if (!adLoader.isLoading()) {
-					insertAdsInVideos();
-				}
-			}
-		}).withNativeAdOptions(adOptions).build();
-		
-		// loadAd
-		adLoader.loadAds(new AdRequest.Builder().build(), NUMBER_OF_ADS);
-	}
-	
+
 	@Override
 	public void onDestroyView() {
 		super.onDestroyView();

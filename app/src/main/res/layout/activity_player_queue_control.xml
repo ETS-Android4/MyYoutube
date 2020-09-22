@@ -56,13 +56,6 @@
             android:focusable="true"
             android:orientation="vertical">
 
-            <!-- NativeAd -->
-            <io.awesome.gagtube.adsmanager.nativead.NativeAdView
-                android:id="@+id/template_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:native_ad_type="@layout/native_ad_small_list"/>
-
             <TextView
                 android:id="@+id/song_name"
                 style="@android:style/TextAppearance.StatusBar.EventContent.Title"

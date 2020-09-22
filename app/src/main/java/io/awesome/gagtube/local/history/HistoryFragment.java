@@ -13,10 +13,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.annimon.stream.Stream;
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.LoadAdError;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
@@ -39,7 +35,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import io.awesome.gagtube.R;
-import io.awesome.gagtube.adsmanager.AppInterstitialAd;
 import io.awesome.gagtube.database.LocalItem;
 import io.awesome.gagtube.database.history.model.SearchHistoryEntry;
 import io.awesome.gagtube.database.stream.StreamStatisticsEntry;
@@ -63,7 +58,6 @@ public class HistoryFragment extends BaseLocalListFragment<List<StreamStatistics
 	@BindView(R.id.empty_message) TextView emptyMessage;
 	@BindView(R.id.fab_play) ExtendedFloatingActionButton fabPlay;
 	@BindView(R.id.loading_progress_bar) ProgressBar progressBar;
-	@BindView(R.id.adView) AdView adView;
 	
 	// search history
 	private SuggestionListAdapter2 suggestionListAdapter2;
@@ -142,12 +136,7 @@ public class HistoryFragment extends BaseLocalListFragment<List<StreamStatistics
 		
 		// onTabSelected listener
 		tabLayout.addOnTabSelectedListener(this);
-		
-		// init InterstitialAd
-		AppInterstitialAd.getInstance().init(activity);
-		
-		// show ad
-		showBannerAd();
+
 	}
 	
 	@Override
@@ -230,26 +219,16 @@ public class HistoryFragment extends BaseLocalListFragment<List<StreamStatistics
 	// Fragment LifeCycle - Destruction
 	@Override
 	public void onPause() {
-		if (adView != null) {
-			adView.pause();
-		}
 		super.onPause();
 	}
 	
 	@Override
 	public void onResume() {
 		super.onResume();
-		if (adView != null) {
-			adView.resume();
-		}
-		showBannerAd();
 	}
 	
 	@Override
 	public void onDestroyView() {
-		if (adView != null) {
-			adView.destroy();
-		}
 		super.onDestroyView();
 		
 		if (itemListAdapter != null) itemListAdapter.unsetSelectedListener();
@@ -421,7 +400,7 @@ public class HistoryFragment extends BaseLocalListFragment<List<StreamStatistics
 			switch (id) {
 				
 				case R.id.action_play:
-					AppInterstitialAd.getInstance().showInterstitialAd(() -> NavigationHelper.playOnMainPlayer(context, getPlayQueue(index)));
+					NavigationHelper.playOnMainPlayer(context, getPlayQueue(index) );
 					break;
 				
 				case R.id.action_share:
@@ -556,27 +535,10 @@ public class HistoryFragment extends BaseLocalListFragment<List<StreamStatistics
 	void onFabPlay() {
 		
 		if (!itemListAdapter.getItemsList().isEmpty()) {
-			AppInterstitialAd.getInstance().showInterstitialAd(() -> NavigationHelper.playOnPopupPlayer(activity, getPlayQueue()));
+			NavigationHelper.playOnPopupPlayer(activity, getPlayQueue() );
 		}
 	}
 	
-	private void showBannerAd() {
-		AdRequest adRequest = new AdRequest.Builder().build();
-		adView.setAdListener(new AdListener() {
-			
-			@Override
-			public void onAdLoaded() {
-				// Code to be executed when an ad finishes loading.
-				adView.setVisibility(View.VISIBLE);
-			}
-			
-			@Override
-			public void onAdFailedToLoad(LoadAdError loadAdError) {
-				// Code to be executed when an ad request fails.
-				adView.setVisibility(View.GONE);
-			}
-		});
-		adView.loadAd(adRequest);
-	}
+
 }
 

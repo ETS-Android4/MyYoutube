@@ -27,17 +27,4 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <io.awesome.gagtube.adsmanager.nativead.NativeAdView
-        android:id="@+id/template_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:animateLayoutChanges="true"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
-        app:native_ad_type="@layout/native_ad_small_single" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

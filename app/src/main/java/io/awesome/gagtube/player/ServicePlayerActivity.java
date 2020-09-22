@@ -17,12 +17,7 @@ import android.widget.TextView;
 
 import com.google.android.exoplayer2.PlaybackParameters;
 import com.google.android.exoplayer2.Player;
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdLoader;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.LoadAdError;
-import com.google.android.gms.ads.VideoOptions;
-import com.google.android.gms.ads.formats.NativeAdOptions;
+
 
 import org.schabi.newpipe.extractor.stream.StreamInfo;
 
@@ -34,13 +29,8 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.awesome.gagtube.R;
-import io.awesome.gagtube.adsmanager.AdUtils;
-import io.awesome.gagtube.adsmanager.AppInterstitialAd;
-import io.awesome.gagtube.adsmanager.nativead.NativeAdStyle;
-import io.awesome.gagtube.adsmanager.nativead.NativeAdView;
 import io.awesome.gagtube.base.BaseActivity;
 import io.awesome.gagtube.fragments.OnScrollBelowItemsListener;
 import io.awesome.gagtube.local.dialog.PlaylistAppendDialog;
@@ -90,8 +80,7 @@ public abstract class ServicePlayerActivity extends BaseActivity implements Play
 	private ImageButton shuffleButton;
 	private ProgressBar progressBar;
 	
-	// NativeAd
-	@BindView(R.id.template_view) NativeAdView nativeAdView;
+
 	
 	// Abstracts
 	public abstract String getTag();
@@ -139,12 +128,7 @@ public abstract class ServicePlayerActivity extends BaseActivity implements Play
 	@Override
 	protected void onResume() {
 		super.onResume();
-		
-		// init InterstitialAd
-		AppInterstitialAd.getInstance().init(this);
-		// show ad
-		showNativeAd();
-		
+
 		if (redraw) {
 			recreate();
 			redraw = false;
@@ -182,12 +166,6 @@ public abstract class ServicePlayerActivity extends BaseActivity implements Play
 	
 	@Override
 	protected void onDestroy() {
-		
-		// destroy ad
-		if (nativeAdView != null) {
-			nativeAdView.destroyNativeAd();
-		}
-		
 		super.onDestroy();
 		unbind();
 	}
@@ -397,8 +375,7 @@ public abstract class ServicePlayerActivity extends BaseActivity implements Play
 			public void selected(PlayQueueItem item, View view) {
 				
 				if (player != null) player.onSelected(item);
-				// show ad
-				showNativeAd();
+
 			}
 			
 			@Override
@@ -448,29 +425,19 @@ public abstract class ServicePlayerActivity extends BaseActivity implements Play
 		
 		if (view.getId() == repeatButton.getId()) {
 			player.onRepeatClicked();
-			
-			// show ad
-			showNativeAd();
+
 		}
 		else if (view.getId() == backwardButton.getId()) {
 			player.onPlayPrevious();
-			// show ad
-			showNativeAd();
 		}
 		else if (view.getId() == playPauseButton.getId()) {
 			player.onPlayPause();
-			// show ad
-			showNativeAd();
 		}
 		else if (view.getId() == forwardButton.getId()) {
 			player.onPlayNext();
-			// show ad
-			showNativeAd();
 		}
 		else if (view.getId() == shuffleButton.getId()) {
 			player.onShuffleClicked();
-			// show ad
-			showNativeAd();
 		}
 		else if (view.getId() == metadata.getId()) {
 			scrollToSelected();
@@ -648,44 +615,5 @@ public abstract class ServicePlayerActivity extends BaseActivity implements Play
 			itemsList.setAdapter(maybeNewAdapter);
 		}
 	}
-	
-	private void showNativeAd() {
-		
-		// ad options
-		VideoOptions videoOptions = new VideoOptions.Builder()
-				.setStartMuted(true)
-				.build();
-		
-		NativeAdOptions adOptions = new NativeAdOptions.Builder()
-				.setVideoOptions(videoOptions)
-				.build();
-		
-		AdLoader adLoader = new AdLoader.Builder(this, AdUtils.getNativeAdId(this))
-				.forUnifiedNativeAd(unifiedNativeAd -> {
-					
-					// show the ad
-					NativeAdStyle styles = new NativeAdStyle.Builder().build();
-					nativeAdView.setStyles(styles);
-					nativeAdView.setNativeAd(unifiedNativeAd);
-				})
-				.withAdListener(new AdListener() {
-					
-					@Override
-					public void onAdFailedToLoad(LoadAdError loadAdError) {
-						super.onAdFailedToLoad(loadAdError);
-					}
-					
-					@Override
-					public void onAdLoaded() {
-						
-						super.onAdLoaded();
-					}
-				})
-				.withNativeAdOptions(adOptions)
-				.build();
-		
-		// loadAd
-		AdRequest.Builder builder = new AdRequest.Builder();
-		adLoader.loadAd(builder.build());
-	}
+
 }

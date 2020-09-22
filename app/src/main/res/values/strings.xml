@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <resources>
-    <string name="app_name" translatable="false">ProTube</string>
+    <string name="app_name" translatable="false">Tube</string>
 
     <!-- Theme -->
     <string name="theme_title">Theme</string>
@@ -8,7 +8,7 @@
     <string name="dark_theme_title">Dark theme</string>
 
     <!-- Notification -->
-    <string name="notification_channel_id" translatable="false">ProTube</string>
+    <string name="notification_channel_id" translatable="false">Tube</string>
     <string name="notification_channel_name">Popup Player</string>
     <string name="notification_channel_description">Notifications for Popup Player</string>
     <string name="general_channel_name">General</string>
@@ -114,8 +114,8 @@
     </string-array>
 
     <!-- Example -->
-    <string name="example_video_title">ProTube Video Title</string>
-    <string name="example_channel_title">ProTube</string>
+    <string name="example_video_title">Tube Video Title</string>
+    <string name="example_channel_title">Tube</string>
 
     <!-- Update new version -->
     <string name="new_version_message">You are using an older version of the app which might not function correctly.\n\nPlease update your app from the Google Play Store.</string>
@@ -218,7 +218,7 @@
     <string name="rating_no_thanks">No, thanks</string>
     <string name="rating_ok_sure">OK, sure</string>
     <string name="rating_giving_feedback">Would you mind giving us some feedback?</string>
-    
+
     <!-- reCaptcha -->
     <string name="title_activity_recaptcha">reCAPTCHA challenge</string>
     <string name="subtitle_activity_recaptcha">Press \"Done\" when solved</string>
@@ -247,7 +247,7 @@
     <string name="player_stream_failure">Could not play this video</string>
     <string name="player_unrecoverable_failure">Unrecoverable player error occurred</string>
     <string name="player_recoverable_failure">Recovering from player error</string>
-    <string name="content_not_supported">This content is not yet supported by ProTube.\n\nIt will hopefully be supported in a future version.</string>
+    <string name="content_not_supported">This content is not yet supported by Tube.\n\nIt will hopefully be supported in a future version.</string>
 
     <!-- download -->
     <string name="download">Download</string>
@@ -288,7 +288,7 @@
     <string name="error_http_unsupported_range">The server does not accept multi-threaded downloads, retry with @string/msg_threads = 1</string>
     <string name="error_http_not_found">Not found</string>
     <string name="error_postprocessing_failed">Post-processing failed</string>
-    <string name="error_postprocessing_stopped">ProTube was closed while working on the file</string>
+    <string name="error_postprocessing_stopped">Tube was closed while working on the file</string>
     <string name="error_insufficient_storage">No space left on device</string>
     <string name="error_progress_lost">Progress lost, because the file was deleted</string>
     <string name="error_timeout">Connection timeout</string>
@@ -319,7 +319,7 @@
 
     <!-- Msg -->
     <string name="msg_error">Error</string>
-    <string name="msg_running">ProTube Downloading</string>
+    <string name="msg_running">Tube Downloading</string>
     <string name="msg_running_detail">Tap to see details</string>
     <string name="toast_no_player">No app installed to play this file</string>
     <string name="error_report_title">Error report</string>

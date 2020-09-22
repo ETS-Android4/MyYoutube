@@ -7,8 +7,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Build;
 
-import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.ads.RequestConfiguration;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.nostra13.universalimageloader.cache.memory.impl.LRULimitedMemoryCache;
@@ -27,7 +25,6 @@ import java.util.List;
 import androidx.multidex.MultiDexApplication;
 import androidx.preference.PreferenceManager;
 import io.awesome.gagtube.activities.ReCaptchaActivity;
-import io.awesome.gagtube.adsmanager.AppInterstitialAd;
 import io.awesome.gagtube.notification.NotificationOreo;
 import io.awesome.gagtube.settings.GAGTubeSettings;
 import io.awesome.gagtube.download.DownloaderImpl;
@@ -81,15 +78,7 @@ public class App extends MultiDexApplication {
 		FirebaseMessaging.getInstance().subscribeToTopic("global");
 		
 		configureRxJavaErrorHandler();
-		
-		// AdMob
-		MobileAds.initialize(this, initializationStatus -> {});
-		
-		// Test device
-		RequestConfiguration builder = new RequestConfiguration.Builder().setTestDeviceIds(Collections.singletonList("92094EE8DBF3A70B378025A71ED90503")).build();
-		MobileAds.setRequestConfiguration(builder);
-		
-		AppInterstitialAd.getInstance().init(this);
+
 	}
 	
 	protected Downloader getDownloader() {

@@ -77,8 +77,6 @@
         <attr name="minDistRequestDisallowParent" format="dimension" />
     </declare-styleable>
 
-    <declare-styleable name="NativeAdView">
-        <attr name="native_ad_type" format="reference"/>
-    </declare-styleable>
+
 
 </resources>

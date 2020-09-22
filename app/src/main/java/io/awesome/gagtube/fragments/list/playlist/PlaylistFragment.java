@@ -9,13 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdLoader;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.LoadAdError;
-import com.google.android.gms.ads.VideoOptions;
-import com.google.android.gms.ads.formats.NativeAdOptions;
 import com.google.android.material.button.MaterialButton;
 
 import org.jetbrains.annotations.NotNull;
@@ -39,10 +32,6 @@ import androidx.appcompat.widget.Toolbar;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.awesome.gagtube.R;
-import io.awesome.gagtube.adsmanager.AdUtils;
-import io.awesome.gagtube.adsmanager.AppInterstitialAd;
-import io.awesome.gagtube.adsmanager.nativead.NativeAdStyle;
-import io.awesome.gagtube.adsmanager.nativead.NativeAdView;
 import io.awesome.gagtube.database.GAGTubeDatabase;
 import io.awesome.gagtube.database.playlist.model.PlaylistRemoteEntity;
 import io.awesome.gagtube.fragments.BackPressable;
@@ -78,10 +67,7 @@ public class PlaylistFragment extends BaseListInfoFragment<PlaylistInfo> impleme
 	private MaterialButton headerPopupButton;
 	private View headerShareButton;
 	private MenuItem playlistBookmarkButton;
-	
-	// NativeAd
-	private NativeAdView nativeAdView;
-	@BindView(R.id.adView) AdView adView;
+
 	
 	public static PlaylistFragment getInstance(int serviceId, String url, String name) {
 		
@@ -124,33 +110,19 @@ public class PlaylistFragment extends BaseListInfoFragment<PlaylistInfo> impleme
 		mToolbar = rootView.findViewById(R.id.default_toolbar);
 		activity.getDelegate().setSupportActionBar(mToolbar);
 		
-		View headerRootLayout = activity.getLayoutInflater().inflate(R.layout.native_ad_list_header, itemsList, false);
-		nativeAdView = headerRootLayout.findViewById(R.id.template_view);
-		infoListAdapter.setHeader(headerRootLayout);
+
 		
-		// show ad
-		showBannerAd();
+
 	}
 	
 	@Override
 	public void onPause() {
-		if (adView != null) {
-			adView.pause();
-		}
 		super.onPause();
 	}
 	
 	@Override
 	public void onResume() {
 		super.onResume();
-		AppInterstitialAd.getInstance().init(activity);
-		// show ad
-		showNativeAd();
-		if (adView != null) {
-			adView.resume();
-		}
-		// show ad
-		showBannerAd();
 	}
 	
 	@Override
@@ -180,9 +152,6 @@ public class PlaylistFragment extends BaseListInfoFragment<PlaylistInfo> impleme
 	
 	@Override
 	public void onDestroyView() {
-		if (adView != null) {
-			adView.destroy();
-		}
 		super.onDestroyView();
 		
 		if (isBookmarkButtonReady != null) isBookmarkButtonReady.set(false);
@@ -195,12 +164,6 @@ public class PlaylistFragment extends BaseListInfoFragment<PlaylistInfo> impleme
 	
 	@Override
 	public void onDestroy() {
-		
-		// destroy ad
-		if (nativeAdView != null) {
-			nativeAdView.destroyNativeAd();
-		}
-		
 		super.onDestroy();
 		
 		if (disposables != null) disposables.dispose();
@@ -257,9 +220,9 @@ public class PlaylistFragment extends BaseListInfoFragment<PlaylistInfo> impleme
 				.observeOn(AndroidSchedulers.mainThread())
 				.subscribe(getPlaylistBookmarkSubscriber());
 		
-		headerPlayAllButton.setOnClickListener(view -> AppInterstitialAd.getInstance().showInterstitialAd(() -> NavigationHelper.playOnMainPlayer(activity, getPlayQueue())));
+		headerPlayAllButton.setOnClickListener(view -> NavigationHelper.playOnMainPlayer(activity, getPlayQueue() ) );
 		
-		headerPopupButton.setOnClickListener(view -> AppInterstitialAd.getInstance().showInterstitialAd(() -> NavigationHelper.playOnPopupPlayer(activity, getPlayQueue())));
+		headerPopupButton.setOnClickListener(view ->  NavigationHelper.playOnPopupPlayer(activity, getPlayQueue() ) );
 		
 		headerShareButton.setOnClickListener(view -> SharedUtils.shareUrl(activity, name, url));
 	}
@@ -388,64 +351,8 @@ public class PlaylistFragment extends BaseListInfoFragment<PlaylistInfo> impleme
 		playlistBookmarkButton.setTitle(titleRes);
 	}
 	
-	private void showNativeAd() {
-		
-		// ad options
-		VideoOptions videoOptions = new VideoOptions.Builder()
-				.setStartMuted(true)
-				.build();
-		
-		NativeAdOptions adOptions = new NativeAdOptions.Builder()
-				.setVideoOptions(videoOptions)
-				.build();
-		
-		AdLoader adLoader = new AdLoader.Builder(activity, AdUtils.getNativeAdId(activity))
-				.forUnifiedNativeAd(unifiedNativeAd -> {
-					
-					// show the ad
-					NativeAdStyle styles = new NativeAdStyle.Builder().build();
-					nativeAdView.setStyles(styles);
-					nativeAdView.setNativeAd(unifiedNativeAd);
-				})
-				.withAdListener(new AdListener() {
-					
-					@Override
-					public void onAdFailedToLoad(LoadAdError loadAdError) {
-						super.onAdFailedToLoad(loadAdError);
-					}
-					
-					@Override
-					public void onAdLoaded() {
-						
-						super.onAdLoaded();
-					}
-				})
-				.withNativeAdOptions(adOptions)
-				.build();
-		
-		// loadAd
-		AdRequest.Builder builder = new AdRequest.Builder();
-		adLoader.loadAd(builder.build());
-	}
-	
-	private void showBannerAd() {
-		AdRequest adRequest = new AdRequest.Builder().build();
-		adView.setAdListener(new AdListener() {
-			
-			@Override
-			public void onAdLoaded() {
-				// Code to be executed when an ad finishes loading.
-				adView.setVisibility(View.VISIBLE);
-			}
-			
-			@Override
-			public void onAdFailedToLoad(LoadAdError loadAdError) {
-				// Code to be executed when an ad request fails.
-				adView.setVisibility(View.GONE);
-			}
-		});
-		adView.loadAd(adRequest);
-	}
+
+
 	
 	private void onPopBackStack() {
 		

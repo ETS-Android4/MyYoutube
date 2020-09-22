@@ -17,7 +17,6 @@ import androidx.fragment.app.FragmentManager;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.awesome.gagtube.R;
-import io.awesome.gagtube.adsmanager.AppInterstitialAd;
 import io.awesome.gagtube.base.BaseFragment;
 import io.awesome.gagtube.fragments.discover.DiscoverFragment;
 import io.awesome.gagtube.fragments.list.main.TrendingFragment;
@@ -51,9 +50,7 @@ public class MainFragment extends BaseFragment {
 	public void onCreate(Bundle savedInstanceState) {
 		
 		super.onCreate(savedInstanceState);
-		
-		// init InterstitialAd
-		AppInterstitialAd.getInstance().init(activity);
+
 	}
 	
 	@Override

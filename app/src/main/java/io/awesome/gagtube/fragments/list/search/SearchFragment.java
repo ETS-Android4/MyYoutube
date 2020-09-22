@@ -22,12 +22,6 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdLoader;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.LoadAdError;
-import com.google.android.gms.ads.VideoOptions;
-import com.google.android.gms.ads.formats.NativeAdOptions;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import org.jetbrains.annotations.NotNull;
@@ -61,9 +55,6 @@ import butterknife.ButterKnife;
 import icepick.State;
 import io.awesome.gagtube.R;
 import io.awesome.gagtube.activities.ReCaptchaActivity;
-import io.awesome.gagtube.adsmanager.AdUtils;
-import io.awesome.gagtube.adsmanager.nativead.NativeAdStyle;
-import io.awesome.gagtube.adsmanager.nativead.NativeAdView;
 import io.awesome.gagtube.database.history.model.SearchHistoryEntry;
 import io.awesome.gagtube.fragments.BackPressable;
 import io.awesome.gagtube.fragments.list.BaseListFragment;
@@ -137,8 +128,7 @@ public class SearchFragment extends BaseListFragment<SearchInfo, ListExtractor.I
 	
 	@BindView(R.id.filter) RadioGroup filter;
 	
-	// NativeAd
-	private NativeAdView nativeAdView;
+
 	
 	public static SearchFragment getInstance(int serviceId, String searchString) {
 		
@@ -220,8 +210,7 @@ public class SearchFragment extends BaseListFragment<SearchInfo, ListExtractor.I
 		
 		super.onResume();
 		
-		// show ad
-		showNativeAd();
+
 		
 		// search by keyword
 		if (!TextUtils.isEmpty(searchString)) {
@@ -255,12 +244,7 @@ public class SearchFragment extends BaseListFragment<SearchInfo, ListExtractor.I
 	
 	@Override
 	public void onDestroy() {
-		
-		// destroy ad
-		if (nativeAdView != null) {
-			nativeAdView.destroyNativeAd();
-		}
-		
+
 		super.onDestroy();
 		if (searchDisposable != null) searchDisposable.dispose();
 		if (suggestionDisposable != null) suggestionDisposable.dispose();
@@ -283,10 +267,7 @@ public class SearchFragment extends BaseListFragment<SearchInfo, ListExtractor.I
 		
 		searchEditText = rootView.findViewById(R.id.toolbar_search_edit_text);
 		searchClear = rootView.findViewById(R.id.toolbar_search_clear);
-		
-		View headerRootLayout = activity.getLayoutInflater().inflate(R.layout.native_ad_list_header, itemsList, false);
-		nativeAdView = headerRootLayout.findViewById(R.id.template_view);
-		infoListAdapter.setHeader(headerRootLayout);
+
 	}
 	
 	// State Saving
@@ -337,8 +318,6 @@ public class SearchFragment extends BaseListFragment<SearchInfo, ListExtractor.I
 		}
 		
 		filter.setOnCheckedChangeListener((radioGroup, checkedId) -> {
-			// show ad
-			showNativeAd();
 			List<String> contentFilter = new ArrayList<>();
 			
 			switch (checkedId) {
@@ -812,45 +791,7 @@ public class SearchFragment extends BaseListFragment<SearchInfo, ListExtractor.I
 		}
 	}
 	
-	private void showNativeAd() {
-		
-		// ad options
-		VideoOptions videoOptions = new VideoOptions.Builder()
-				.setStartMuted(true)
-				.build();
-		
-		NativeAdOptions adOptions = new NativeAdOptions.Builder()
-				.setVideoOptions(videoOptions)
-				.build();
-		
-		AdLoader adLoader = new AdLoader.Builder(activity, AdUtils.getNativeAdId(activity))
-				.forUnifiedNativeAd(unifiedNativeAd -> {
-					
-					// show the ad
-					NativeAdStyle styles = new NativeAdStyle.Builder().build();
-					nativeAdView.setStyles(styles);
-					nativeAdView.setNativeAd(unifiedNativeAd);
-				})
-				.withAdListener(new AdListener() {
-					
-					@Override
-					public void onAdFailedToLoad(LoadAdError loadAdError) {
-						super.onAdFailedToLoad(loadAdError);
-					}
-					
-					@Override
-					public void onAdLoaded() {
-						
-						super.onAdLoaded();
-					}
-				})
-				.withNativeAdOptions(adOptions)
-				.build();
-		
-		// loadAd
-		AdRequest.Builder builder = new AdRequest.Builder();
-		adLoader.loadAd(builder.build());
-	}
+
 	
 	@Override
 	public void onActivityResult(final int requestCode, final int resultCode, final Intent data) {

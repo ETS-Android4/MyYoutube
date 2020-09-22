@@ -5,16 +5,5 @@
     android:layout_height="wrap_content"
     android:padding="8dp">
 
-    <io.awesome.gagtube.adsmanager.nativead.NativeAdView
-        android:id="@+id/template_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:animateLayoutChanges="true"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:native_ad_type="@layout/native_ad_small_single" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -117,10 +117,6 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <include
-        layout="@layout/banner_ad_4"
-        android:visibility="gone" />
-    
     <RelativeLayout
         android:id="@+id/playbackControlRoot"
         android:layout_width="match_parent"

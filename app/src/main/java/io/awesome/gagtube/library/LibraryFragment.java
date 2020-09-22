@@ -10,13 +10,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdLoader;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.LoadAdError;
-import com.google.android.gms.ads.VideoOptions;
-import com.google.android.gms.ads.formats.NativeAdOptions;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import org.reactivestreams.Subscriber;
@@ -34,9 +27,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import io.awesome.gagtube.R;
-import io.awesome.gagtube.adsmanager.AdUtils;
-import io.awesome.gagtube.adsmanager.nativead.NativeAdStyle;
-import io.awesome.gagtube.adsmanager.nativead.NativeAdView;
 import io.awesome.gagtube.database.AppDatabase;
 import io.awesome.gagtube.database.GAGTubeDatabase;
 import io.awesome.gagtube.database.LocalItem;
@@ -62,8 +52,6 @@ import io.reactivex.disposables.CompositeDisposable;
 public class LibraryFragment extends BaseLocalListFragment<List<PlaylistLocalItem>, Void> {
 	
 	@BindView(R.id.empty_message) TextView emptyMessage;
-	@BindView(R.id.template_view) NativeAdView nativeAdView;
-	@BindView(R.id.adView) AdView adView;
 	
 	private Subscription databaseSubscription;
 	private CompositeDisposable disposables = new CompositeDisposable();
@@ -104,7 +92,7 @@ public class LibraryFragment extends BaseLocalListFragment<List<PlaylistLocalIte
 		emptyMessage.setText(R.string.no_playlists);
 		
 		// show ad
-		showBannerAd();
+
 	}
 	
 	@Override
@@ -220,11 +208,7 @@ public class LibraryFragment extends BaseLocalListFragment<List<PlaylistLocalIte
 	@Override
 	public void onResume() {
 		super.onResume();
-		// show ad
-		if (adView != null) {
-			adView.resume();
-		}
-		showNativeAd();
+
 	}
 	
 	// Fragment LifeCycle - Loading
@@ -306,68 +290,9 @@ public class LibraryFragment extends BaseLocalListFragment<List<PlaylistLocalIte
 		if (disposables != null) disposables.clear();
 	}
 	
-	private void showBannerAd() {
-		AdRequest adRequest = new AdRequest.Builder().build();
-		adView.setAdListener(new AdListener() {
-			
-			@Override
-			public void onAdLoaded() {
-				// Code to be executed when an ad finishes loading.
-				adView.setVisibility(View.VISIBLE);
-			}
-			
-			@Override
-			public void onAdFailedToLoad(LoadAdError loadAdError) {
-				// Code to be executed when an ad request fails.
-				adView.setVisibility(View.GONE);
-			}
-		});
-		adView.loadAd(adRequest);
-	}
+
 	
-	private void showNativeAd() {
-		
-		// ad options
-		VideoOptions videoOptions = new VideoOptions.Builder()
-				.setStartMuted(true)
-				.build();
-		
-		NativeAdOptions adOptions = new NativeAdOptions.Builder()
-				.setVideoOptions(videoOptions)
-				.build();
-		
-		AdLoader adLoader = new AdLoader.Builder(activity, AdUtils.getNativeAdId(activity))
-				.forUnifiedNativeAd(unifiedNativeAd -> {
-					
-					// show the ad
-					NativeAdStyle styles = new NativeAdStyle.Builder().build();
-					nativeAdView.setStyles(styles);
-					nativeAdView.setNativeAd(unifiedNativeAd);
-				})
-				.withAdListener(new AdListener() {
-					
-					@Override
-					public void onAdFailedToLoad(LoadAdError loadAdError) {
-						// gone
-						nativeAdView.setVisibility(View.GONE);
-					}
-					
-					@Override
-					public void onAdLoaded() {
-						
-						super.onAdLoaded();
-						
-						// visible
-						nativeAdView.setVisibility(View.VISIBLE);
-					}
-				})
-				.withNativeAdOptions(adOptions)
-				.build();
-		
-		// loadAd
-		AdRequest.Builder builder = new AdRequest.Builder();
-		adLoader.loadAd(builder.build());
-	}
+
 	
 	@OnClick(R.id.action_search)
 	void onSearch() {
@@ -415,9 +340,6 @@ public class LibraryFragment extends BaseLocalListFragment<List<PlaylistLocalIte
 	// Fragment LifeCycle - Destruction
 	@Override
 	public void onPause() {
-		if (adView != null) {
-			adView.pause();
-		}
 		super.onPause();
 	}
 	
@@ -425,12 +347,7 @@ public class LibraryFragment extends BaseLocalListFragment<List<PlaylistLocalIte
 	public void onDestroyView() {
 		
 		// destroy ad
-		if (adView != null) {
-			adView.destroy();
-		}
-		if (nativeAdView != null) {
-			nativeAdView.destroyNativeAd();
-		}
+
 		
 		super.onDestroyView();
 		

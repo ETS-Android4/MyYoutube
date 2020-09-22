@@ -32,9 +32,6 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <!-- Banner Ad -->
-                <include layout="@layout/banner_ad_1" />
-                
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -189,13 +186,6 @@
 
                 </LinearLayout>
 
-                <!-- NativeAd -->
-                <io.awesome.gagtube.adsmanager.nativead.NativeAdView
-                    android:id="@+id/template_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
-                    app:native_ad_type="@layout/native_ad_small_list" />
 
                 <TextView
                     android:layout_width="wrap_content"

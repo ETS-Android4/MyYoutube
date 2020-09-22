@@ -13,12 +13,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdLoader;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.LoadAdError;
-import com.google.android.gms.ads.VideoOptions;
-import com.google.android.gms.ads.formats.NativeAdOptions;
 import com.google.android.material.button.MaterialButton;
 import com.jakewharton.rxbinding2.view.RxView;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -43,10 +37,6 @@ import androidx.core.content.ContextCompat;
 import butterknife.ButterKnife;
 import io.awesome.gagtube.App;
 import io.awesome.gagtube.R;
-import io.awesome.gagtube.adsmanager.AdUtils;
-import io.awesome.gagtube.adsmanager.AppInterstitialAd;
-import io.awesome.gagtube.adsmanager.nativead.NativeAdStyle;
-import io.awesome.gagtube.adsmanager.nativead.NativeAdView;
 import io.awesome.gagtube.database.subscription.SubscriptionEntity;
 import io.awesome.gagtube.fragments.BackPressable;
 import io.awesome.gagtube.fragments.list.BaseListInfoFragment;
@@ -88,9 +78,7 @@ public class ChannelFragment extends BaseListInfoFragment<ChannelInfo> implement
 	private MaterialButton headerPopupButton;
 	
 	private String toolbarTitle;
-	
-	// NativeAd
-	private NativeAdView nativeAdView;
+
 	
 	public static ChannelFragment getInstance(int serviceId, String url, String name) {
 		
@@ -135,28 +123,16 @@ public class ChannelFragment extends BaseListInfoFragment<ChannelInfo> implement
 		activity.getDelegate().setSupportActionBar(mToolbar);
 		mToolbar.setTitle(TextUtils.isEmpty(toolbarTitle) ? "" : toolbarTitle);
 		headerTitleView.setText(TextUtils.isEmpty(toolbarTitle) ? "" : toolbarTitle);
-		
-		View headerRootLayout = activity.getLayoutInflater().inflate(R.layout.native_ad_list_header, itemsList, false);
-		nativeAdView = headerRootLayout.findViewById(R.id.template_view);
-		infoListAdapter.setHeader(headerRootLayout);
+
 	}
 	
 	@Override
 	public void onResume() {
 		super.onResume();
-		AppInterstitialAd.getInstance().init(activity);
-		// show ad
-		showNativeAd();
 	}
 	
 	@Override
 	public void onDestroy() {
-		
-		// destroy ad
-		if (nativeAdView != null) {
-			nativeAdView.destroyNativeAd();
-		}
-		
 		super.onDestroy();
 		if (disposables != null) disposables.clear();
 		if (subscribeButtonMonitor != null) subscribeButtonMonitor.dispose();
@@ -355,9 +331,9 @@ public class ChannelFragment extends BaseListInfoFragment<ChannelInfo> implement
 		updateSubscription(result);
 		monitorSubscription(result);
 		
-		headerPlayAllButton.setOnClickListener(view -> AppInterstitialAd.getInstance().showInterstitialAd(() -> NavigationHelper.playOnMainPlayer(activity, getPlayQueue())));
+		headerPlayAllButton.setOnClickListener(view -> NavigationHelper.playOnMainPlayer(activity, getPlayQueue() ) );
 		
-		headerPopupButton.setOnClickListener(view -> AppInterstitialAd.getInstance().showInterstitialAd(() -> NavigationHelper.playOnPopupPlayer(activity, getPlayQueue())));
+		headerPopupButton.setOnClickListener(view -> NavigationHelper.playOnPopupPlayer(activity, getPlayQueue() ) );
 	}
 	
 	private PlayQueue getPlayQueue() {
@@ -412,44 +388,5 @@ public class ChannelFragment extends BaseListInfoFragment<ChannelInfo> implement
 		
 		return false;
 	}
-	
-	private void showNativeAd() {
-		
-		// ad options
-		VideoOptions videoOptions = new VideoOptions.Builder()
-				.setStartMuted(true)
-				.build();
-		
-		NativeAdOptions adOptions = new NativeAdOptions.Builder()
-				.setVideoOptions(videoOptions)
-				.build();
-		
-		AdLoader adLoader = new AdLoader.Builder(activity, AdUtils.getNativeAdId(activity))
-				.forUnifiedNativeAd(unifiedNativeAd -> {
-					
-					// show the ad
-					NativeAdStyle styles = new NativeAdStyle.Builder().build();
-					nativeAdView.setStyles(styles);
-					nativeAdView.setNativeAd(unifiedNativeAd);
-				})
-				.withAdListener(new AdListener() {
-					
-					@Override
-					public void onAdFailedToLoad(LoadAdError loadAdError) {
-						super.onAdFailedToLoad(loadAdError);
-					}
-					
-					@Override
-					public void onAdLoaded() {
-						
-						super.onAdLoaded();
-					}
-				})
-				.withNativeAdOptions(adOptions)
-				.build();
-		
-		// loadAd
-		AdRequest.Builder builder = new AdRequest.Builder();
-		adLoader.loadAd(builder.build());
-	}
+
 }

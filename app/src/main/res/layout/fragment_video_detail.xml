@@ -44,22 +44,11 @@
                 android:layout_height="match_parent"
                 android:background="?attr/windowBackground">
 
-                <!-- Banner Ad -->
-                <include
-                    layout="@layout/banner_ad_2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentEnd="true"
-                    android:visibility="gone" />
-
                 <!-- TITLE -->
                 <RelativeLayout
                     android:id="@+id/detail_title_root_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/adView"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentEnd="true"
                     android:background="?attr/selectableItemBackground"
@@ -396,14 +385,6 @@
                                 app:switchPadding="8dp" />
 
                         </androidx.constraintlayout.widget.ConstraintLayout>
-
-                        <!-- Native Ad -->
-                        <io.awesome.gagtube.adsmanager.nativead.NativeAdView
-                            android:id="@+id/template_view"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            app:native_ad_type="@layout/native_ad_medium"
-                            android:visibility="gone"/>
 
                         <LinearLayout
                             android:id="@+id/detail_related_streams_view"

@@ -15,8 +15,6 @@ import java.util.Locale;
 import androidx.annotation.Nullable;
 import androidx.preference.PreferenceManager;
 import io.awesome.gagtube.R;
-import io.awesome.gagtube.adsmanager.AdUtils;
-import io.awesome.gagtube.adsmanager.AppInterstitialAd;
 import io.awesome.gagtube.base.BaseActivity;
 import io.awesome.gagtube.util.AppUtils;
 import io.awesome.gagtube.util.Constants;
@@ -36,14 +34,8 @@ public class SplashActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash_activity);
 
-        // fetch show ads from remote config
-        AdUtils.fetchShowAdsFromRemoteConfig(this);
-
         SharedPreferences defaultPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences.Editor editor = defaultPreferences.edit();
-
-        // init InterstitialAd
-        AppInterstitialAd.getInstance().init(this);
 
         String countryCode = AppUtils.getDeviceCountryIso(this);
         String languageCode = Stream.of(Locale.getAvailableLocales()).filter(locale -> locale.getCountry().equals(AppUtils.getDeviceCountryIso(this))).map(Locale::getLanguage).findFirst().get();
@@ -62,10 +54,7 @@ public class SplashActivity extends BaseActivity {
             SharedPrefsHelper.setLongPrefs(this, SharedPrefsHelper.Key.START_APP_DATE.name(), startAppDate.getTime());
         }
 
-        new Handler().postDelayed(() -> {
-            // delay at here 2 seconds, then open MainActivity
-            AppInterstitialAd.getInstance().showInterstitialAd(this::openMainActivity);
-        }, 2000);
+        openMainActivity();
     }
 
     private void openMainActivity() {

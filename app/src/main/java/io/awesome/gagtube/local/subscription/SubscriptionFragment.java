@@ -11,13 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdLoader;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.LoadAdError;
-import com.google.android.gms.ads.VideoOptions;
-import com.google.android.gms.ads.formats.NativeAdOptions;
-
 import org.jetbrains.annotations.NotNull;
 import org.schabi.newpipe.extractor.InfoItem;
 import org.schabi.newpipe.extractor.channel.ChannelInfoItem;
@@ -36,9 +29,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import icepick.State;
 import io.awesome.gagtube.R;
-import io.awesome.gagtube.adsmanager.AdUtils;
-import io.awesome.gagtube.adsmanager.nativead.NativeAdStyle;
-import io.awesome.gagtube.adsmanager.nativead.NativeAdView;
 import io.awesome.gagtube.database.subscription.SubscriptionEntity;
 import io.awesome.gagtube.fragments.BaseStateFragment;
 import io.awesome.gagtube.info_list.InfoListAdapter;
@@ -57,8 +47,7 @@ public class SubscriptionFragment extends BaseStateFragment<List<SubscriptionEnt
 	
 	@BindView(R.id.default_toolbar) Toolbar toolbar;
 	@BindView(R.id.empty_message) TextView emptyMessage;
-	// NativeAd
-	private NativeAdView template;
+
 	
 	private RecyclerView itemsList;
 	@State
@@ -101,8 +90,6 @@ public class SubscriptionFragment extends BaseStateFragment<List<SubscriptionEnt
 	@Override
 	public void onResume() {
 		super.onResume();
-		// show ad
-		showNativeAd();
 	}
 	
 	@Override
@@ -125,12 +112,7 @@ public class SubscriptionFragment extends BaseStateFragment<List<SubscriptionEnt
 	
 	@Override
 	public void onDestroy() {
-		
-		// destroy ad
-		if (template != null) {
-			template.destroyNativeAd();
-		}
-		
+
 		if (disposables != null) disposables.dispose();
 		disposables = null;
 		subscriptionService = null;
@@ -180,10 +162,7 @@ public class SubscriptionFragment extends BaseStateFragment<List<SubscriptionEnt
 		
 		// for empty message
 		emptyMessage.setText(R.string.empty_message_no_channel_subscription);
-		
-		View headerRootLayout = activity.getLayoutInflater().inflate(R.layout.native_ad_list_header, itemsList, false);
-		template = headerRootLayout.findViewById(R.id.template_view);
-		infoListAdapter.setHeader(headerRootLayout);
+
 	}
 	
 	@Override
@@ -358,44 +337,5 @@ public class SubscriptionFragment extends BaseStateFragment<List<SubscriptionEnt
 		onUnrecoverableError(exception, UserAction.SOMETHING_ELSE, "none", "Subscriptions", R.string.general_error);
 		return true;
 	}
-	
-	private void showNativeAd() {
-		
-		// ad options
-		VideoOptions videoOptions = new VideoOptions.Builder()
-				.setStartMuted(true)
-				.build();
-		
-		NativeAdOptions adOptions = new NativeAdOptions.Builder()
-				.setVideoOptions(videoOptions)
-				.build();
-		
-		AdLoader adLoader = new AdLoader.Builder(activity, AdUtils.getNativeAdId(activity))
-				.forUnifiedNativeAd(unifiedNativeAd -> {
-					
-					// show the ad
-					NativeAdStyle styles = new NativeAdStyle.Builder().build();
-					template.setStyles(styles);
-					template.setNativeAd(unifiedNativeAd);
-				})
-				.withAdListener(new AdListener() {
-					
-					@Override
-					public void onAdFailedToLoad(LoadAdError loadAdError) {
-						super.onAdFailedToLoad(loadAdError);
-					}
-					
-					@Override
-					public void onAdLoaded() {
-						
-						super.onAdLoaded();
-					}
-				})
-				.withNativeAdOptions(adOptions)
-				.build();
-		
-		// loadAd
-		AdRequest.Builder builder = new AdRequest.Builder();
-		adLoader.loadAd(builder.build());
-	}
+
 }

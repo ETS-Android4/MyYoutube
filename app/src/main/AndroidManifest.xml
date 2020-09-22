@@ -102,7 +102,7 @@
             android:name="io.fabric.ApiKey"
             android:value="46d7ab66a18c290ae541a43df8d2cbd2e0358ee7" />
 
-        <!-- AdMob -->
+
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="@string/app_id" />

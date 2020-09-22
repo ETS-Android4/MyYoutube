@@ -14,7 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.preference.PreferenceManager;
 import io.awesome.gagtube.R;
-import io.awesome.gagtube.adsmanager.AppInterstitialAd;
+
 import io.awesome.gagtube.base.BaseActivity;
 import io.awesome.gagtube.fragments.BackPressable;
 import io.awesome.gagtube.fragments.MainFragment;
@@ -43,8 +43,7 @@ public class MainActivity extends BaseActivity {
 		}
 		setSupportActionBar(findViewById(R.id.toolbar));
 		
-		// init InterstitialAd
-		AppInterstitialAd.getInstance().init(this);
+
 	}
 	
 	@Override

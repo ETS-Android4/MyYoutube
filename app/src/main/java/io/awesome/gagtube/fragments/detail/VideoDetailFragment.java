@@ -68,7 +68,6 @@ import icepick.State;
 import io.awesome.gagtube.App;
 import io.awesome.gagtube.R;
 import io.awesome.gagtube.activities.ReCaptchaActivity;
-import io.awesome.gagtube.adsmanager.AppInterstitialAd;
 import io.awesome.gagtube.database.subscription.SubscriptionEntity;
 import io.awesome.gagtube.download.ui.DownloadDialog;
 import io.awesome.gagtube.fragments.BackPressable;
@@ -175,10 +174,7 @@ public class VideoDetailFragment extends BaseStateFragment<StreamInfo> implement
 	private PlayQueue playQueue;
 	@Nullable
 	private PlayerState playerState;
-	
-	// NativeAd
-	//@BindView(R.id.template_view) NativeAdView nativeAdView;
-	//@BindView(R.id.adView) AdView adView;
+
 	@BindView(R.id.switch_auto_play) SwitchMaterial switchAutoplay;
 	
 	public static VideoDetailFragment getInstance(StreamInfoItem streamInfoItem, int serviceId, String videoUrl, String name) {
@@ -210,18 +206,12 @@ public class VideoDetailFragment extends BaseStateFragment<StreamInfo> implement
 		
 		View view = inflater.inflate(R.layout.fragment_video_detail, container, false);
 		ButterKnife.bind(this, view);
-		
-		// init InterstitialAd
-		AppInterstitialAd.getInstance().init(activity);
-		
+
 		return view;
 	}
 	
 	@Override
 	public void onPause() {
-		/*if (adView != null) {
-			adView.pause();
-		}*/
 		super.onPause();
 		if (currentWorker != null) currentWorker.dispose();
 	}
@@ -230,16 +220,7 @@ public class VideoDetailFragment extends BaseStateFragment<StreamInfo> implement
 	public void onResume() {
 		
 		super.onResume();
-		/*if (adView != null) {
-			adView.resume();
-		}*/
-		
-		/*// show native ad
-		AppUtils.displayAds(activity, isShowAd -> {
-			if (isShowAd) {
-				showNativeAd();
-			}
-		});*/
+
 		
 		if (playerImpl != null && playerState != null) {
 			playerImpl.setPlaybackQuality(playerState.getPlaybackQuality());
@@ -291,9 +272,6 @@ public class VideoDetailFragment extends BaseStateFragment<StreamInfo> implement
 	
 	@Override
 	public void onDestroyView() {
-		/*if (adView != null) {
-			adView.destroy();
-		}*/
 		super.onDestroyView();
 	}
 	
@@ -402,10 +380,8 @@ public class VideoDetailFragment extends BaseStateFragment<StreamInfo> implement
 					break;
 				
 				case R.id.detail_controls_popup:
-					AppInterstitialAd.getInstance().showInterstitialAd(() -> {
 						playerImpl.onPause();
 						playerImpl.onFullScreenButtonClicked();
-					});
 					break;
 				
 				case R.id.detail_controls_playlist_append:
@@ -500,12 +476,7 @@ public class VideoDetailFragment extends BaseStateFragment<StreamInfo> implement
 		
 		infoItemBuilder = new InfoItemBuilder(activity);
 		
-		/*// show ad
-		AppUtils.displayAds(activity, isShowAd -> {
-			if (isShowAd) {
-				showBannerAd();
-			}
-		});*/
+
 		
 		// handling video
 		playerImpl = new VideoPlayerDetail(activity);
@@ -531,19 +502,7 @@ public class VideoDetailFragment extends BaseStateFragment<StreamInfo> implement
 			
 			@Override
 			public void selected(StreamInfoItem selectedItem) {
-				// show ad
-				AppUtils.displayAds(activity, isShowAd -> {
-					if (isShowAd) {
-						AppInterstitialAd.getInstance().showInterstitialAd(() -> {
-							prepareLoadVideo(selectedItem);
-							//showBannerAd();
-							//showNativeAd();
-						});
-					} else {
-						prepareLoadVideo(selectedItem);
-					}
-					//nativeAdView.setVisibility(isShowAd ? View.VISIBLE : View.GONE);
-				});
+				prepareLoadVideo(selectedItem);
 			}
 			
 			@Override
@@ -583,7 +542,7 @@ public class VideoDetailFragment extends BaseStateFragment<StreamInfo> implement
 			switch (id) {
 				
 				case R.id.action_play:
-					AppInterstitialAd.getInstance().showInterstitialAd(() -> NavigationHelper.playOnMainPlayer(activity, getPlayQueue(index)));
+					NavigationHelper.playOnMainPlayer(activity, getPlayQueue(index));
 					break;
 				
 				case R.id.action_append_playlist:
@@ -694,15 +653,7 @@ public class VideoDetailFragment extends BaseStateFragment<StreamInfo> implement
 		playerImpl.handleVideo(playQueue);
 		// load video
 		selectAndLoadVideo(peek.getServiceId(), peek.getUrl(), !TextUtils.isEmpty(peek.getTitle()) ? peek.getTitle() : "");
-		
-		// show ad
-		/*AppUtils.displayAds(activity, isShowAd -> {
-			if (isShowAd) {
-				showBannerAd();
-				showNativeAd();
-			}
-			nativeAdView.setVisibility(isShowAd ? View.VISIBLE : View.GONE);
-		});*/
+
 		
 		return true;
 	}
@@ -1168,24 +1119,15 @@ public class VideoDetailFragment extends BaseStateFragment<StreamInfo> implement
 					playerImpl.handleVideo(playQueue);
 					selectAndLoadVideo(streamInfoItem.getServiceId(), streamInfoItem.getUrl(), streamInfoItem.getName());
 					
-					// show ad
-					/*AppUtils.displayAds(activity, isShowAd -> {
-						if (isShowAd) {
-							showBannerAd();
-							showNativeAd();
-						}
-						nativeAdView.setVisibility(isShowAd ? View.VISIBLE : View.GONE);
-					});*/
+
 				}
 			}
 			else if (v.getId() == btnFullScreen.getId()) {
 				openNormalVideoPlayer();
 			}
 			else if (v.getId() == btnPopup.getId()) {
-				AppInterstitialAd.getInstance().showInterstitialAd(() -> {
-					playerImpl.onPause();
-					playerImpl.onFullScreenButtonClicked();
-				});
+				playerImpl.onPause();
+				playerImpl.onFullScreenButtonClicked();
 			}
 			else if (v.getId() == btnShare.getId()) {
 				if (currentInfo != null) {
@@ -1413,70 +1355,7 @@ public class VideoDetailFragment extends BaseStateFragment<StreamInfo> implement
 		}
 	}
 	
-	/*private void showNativeAd() {
-		
-		// ad options
-		VideoOptions videoOptions = new VideoOptions.Builder()
-				.setStartMuted(true)
-				.build();
-		
-		NativeAdOptions adOptions = new NativeAdOptions.Builder()
-				.setVideoOptions(videoOptions)
-				.build();
-		// if fragment is attached to activity
-		if (activity != null) {
-			AdLoader adLoader = new AdLoader.Builder(activity, AdUtils.getNativeAdId(activity))
-					.forUnifiedNativeAd(unifiedNativeAd -> {
-						
-						// show the ad
-						NativeAdStyle styles = new NativeAdStyle.Builder().build();
-						nativeAdView.setStyles(styles);
-						nativeAdView.setNativeAd(unifiedNativeAd);
-					})
-					.withAdListener(new AdListener() {
-						
-						@Override
-						public void onAdFailedToLoad(LoadAdError loadAdError) {
-							// gone
-							nativeAdView.setVisibility(View.GONE);
-						}
-						
-						@Override
-						public void onAdLoaded() {
-							
-							super.onAdLoaded();
-							
-							// visible
-							nativeAdView.setVisibility(View.VISIBLE);
-						}
-					})
-					.withNativeAdOptions(adOptions)
-					.build();
-			
-			// loadAd
-			AdRequest.Builder builder = new AdRequest.Builder();
-			adLoader.loadAd(builder.build());
-		}
-	}
-	
-	private void showBannerAd() {
-		AdRequest adRequest = new AdRequest.Builder().build();
-		adView.setAdListener(new AdListener() {
-			
-			@Override
-			public void onAdLoaded() {
-				// Code to be executed when an ad finishes loading.
-				adView.setVisibility(View.VISIBLE);
-			}
-			
-			@Override
-			public void onAdFailedToLoad(LoadAdError loadAdError) {
-				// Code to be executed when an ad request fails.
-				adView.setVisibility(View.GONE);
-			}
-		});
-		adView.loadAd(adRequest);
-	}*/
+
 	
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {

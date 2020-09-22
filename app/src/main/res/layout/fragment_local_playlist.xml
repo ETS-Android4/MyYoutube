@@ -17,9 +17,6 @@
 
         <include layout="@layout/playlist_control"/>
 
-        <!-- Banner Ad -->
-        <include layout="@layout/banner_ad_3" />
-
     </com.google.android.material.appbar.AppBarLayout>
 
     <RelativeLayout

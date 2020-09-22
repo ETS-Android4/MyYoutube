@@ -25,7 +25,6 @@ import androidx.appcompat.widget.PopupMenu;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import io.awesome.gagtube.R;
-import io.awesome.gagtube.adsmanager.AppInterstitialAd;
 import io.awesome.gagtube.fragments.BaseStateFragment;
 import io.awesome.gagtube.fragments.OnScrollBelowItemsListener;
 import io.awesome.gagtube.fragments.list.channel.ChannelFragment;
@@ -35,7 +34,6 @@ import io.awesome.gagtube.player.playqueue.PlayQueue;
 import io.awesome.gagtube.player.playqueue.SinglePlayQueue;
 import io.awesome.gagtube.report.ErrorActivity;
 import io.awesome.gagtube.util.AnimationUtils;
-import io.awesome.gagtube.util.AppUtils;
 import io.awesome.gagtube.util.NavigationHelper;
 import io.awesome.gagtube.util.OnClickGesture;
 import io.awesome.gagtube.util.SharedUtils;
@@ -65,7 +63,7 @@ public abstract class BaseListFragment<I, N> extends BaseStateFragment<I> implem
 		super.onCreate(savedInstanceState);
 		
 		setHasOptionsMenu(true);
-		AppInterstitialAd.getInstance().init(activity);
+
 	}
 	
 	@Override
@@ -155,15 +153,7 @@ public abstract class BaseListFragment<I, N> extends BaseStateFragment<I> implem
 			
 			@Override
 			public void selected(StreamInfoItem selectedItem) {
-				// show native ad
-				AppUtils.displayAds(activity, isShowAd -> {
-					if (isShowAd) {
-						AppInterstitialAd.getInstance().showInterstitialAd(() -> onStreamSelected(selectedItem));
-					}
-					else {
-						onStreamSelected(selectedItem);
-					}
-				});
+				onStreamSelected(selectedItem);
 			}
 			
 			@Override
@@ -247,7 +237,7 @@ public abstract class BaseListFragment<I, N> extends BaseStateFragment<I> implem
 			switch (id) {
 				
 				case R.id.action_play:
-					AppInterstitialAd.getInstance().showInterstitialAd(() -> NavigationHelper.playOnMainPlayer(context, getPlayQueue(index)));
+					NavigationHelper.playOnMainPlayer(context, getPlayQueue(index) );
 					break;
 				
 				case R.id.action_append_playlist:

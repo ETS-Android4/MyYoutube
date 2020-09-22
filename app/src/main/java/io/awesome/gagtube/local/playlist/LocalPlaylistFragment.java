@@ -11,11 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.LoadAdError;
-
 import org.jetbrains.annotations.NotNull;
 import org.reactivestreams.Subscriber;
 import org.reactivestreams.Subscription;
@@ -38,7 +33,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import icepick.State;
 import io.awesome.gagtube.R;
-import io.awesome.gagtube.adsmanager.AppInterstitialAd;
 import io.awesome.gagtube.database.GAGTubeDatabase;
 import io.awesome.gagtube.database.LocalItem;
 import io.awesome.gagtube.database.playlist.PlaylistStreamEntry;
@@ -68,7 +62,6 @@ public class LocalPlaylistFragment extends BaseLocalListFragment<List<PlaylistSt
 	@BindView(R.id.playlist_ctrl_play_all_button) View headerPlayAllButton;
 	@BindView(R.id.playlist_ctrl_play_popup_button) View headerPopupButton;
 	@BindView(R.id.default_toolbar) Toolbar mToolbar;
-	@BindView(R.id.adView) AdView adView;
 	
 	@State
 	protected Long playlistId;
@@ -128,11 +121,7 @@ public class LocalPlaylistFragment extends BaseLocalListFragment<List<PlaylistSt
 		
 		// toolbar
 		activity.getDelegate().setSupportActionBar(mToolbar);
-		
-		// init InterstitialAd
-		AppInterstitialAd.getInstance().init(activity);
-		// show ad
-		showBannerAd();
+
 	}
 	
 	@Override
@@ -239,11 +228,7 @@ public class LocalPlaylistFragment extends BaseLocalListFragment<List<PlaylistSt
 	// Fragment Lifecycle - Destruction
 	@Override
 	public void onPause() {
-		if (adView != null) {
-			adView.pause();
-		}
 		super.onPause();
-		
 		// Save on exit
 		saveImmediate();
 	}
@@ -251,18 +236,10 @@ public class LocalPlaylistFragment extends BaseLocalListFragment<List<PlaylistSt
 	@Override
 	public void onResume() {
 		super.onResume();
-		if (adView != null) {
-			adView.resume();
-		}
-		// show ad
-		showBannerAd();
 	}
 	
 	@Override
 	public void onDestroyView() {
-		if (adView != null) {
-			adView.destroy();
-		}
 		super.onDestroyView();
 		
 		if (itemListAdapter != null) itemListAdapter.unsetSelectedListener();
@@ -280,7 +257,6 @@ public class LocalPlaylistFragment extends BaseLocalListFragment<List<PlaylistSt
 	
 	@Override
 	public void onDestroy() {
-		
 		super.onDestroy();
 		
 		if (debouncedSaveSignal != null) debouncedSaveSignal.onComplete();
@@ -361,7 +337,7 @@ public class LocalPlaylistFragment extends BaseLocalListFragment<List<PlaylistSt
 		headerPopupButton.setOnClickListener(view -> {
 			
 			if (!itemListAdapter.getItemsList().isEmpty()) {
-				AppInterstitialAd.getInstance().showInterstitialAd(() -> NavigationHelper.playOnPopupPlayer(activity, getPlayQueue()));
+				NavigationHelper.playOnPopupPlayer(activity, getPlayQueue() );
 			}
 		});
 		
@@ -539,7 +515,7 @@ public class LocalPlaylistFragment extends BaseLocalListFragment<List<PlaylistSt
 			switch (id) {
 				
 				case R.id.action_play:
-					AppInterstitialAd.getInstance().showInterstitialAd(() -> NavigationHelper.playOnMainPlayer(context, getPlayQueue(index)));
+					NavigationHelper.playOnMainPlayer(context, getPlayQueue(index) );
 					break;
 				
 				case R.id.action_set_thumbnail:
@@ -607,25 +583,6 @@ public class LocalPlaylistFragment extends BaseLocalListFragment<List<PlaylistSt
 		
 		onPopBackStack();
 		return true;
-	}
-	
-	private void showBannerAd() {
-		AdRequest adRequest = new AdRequest.Builder().build();
-		adView.setAdListener(new AdListener() {
-			
-			@Override
-			public void onAdLoaded() {
-				// Code to be executed when an ad finishes loading.
-				adView.setVisibility(View.VISIBLE);
-			}
-			
-			@Override
-			public void onAdFailedToLoad(LoadAdError loadAdError) {
-				// Code to be executed when an ad request fails.
-				adView.setVisibility(View.GONE);
-			}
-		});
-		adView.loadAd(adRequest);
 	}
 }
 

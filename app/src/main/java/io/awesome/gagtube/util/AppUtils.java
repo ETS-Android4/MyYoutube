@@ -61,26 +61,9 @@ public class AppUtils {
 		});
 	}
 	
-	public static void displayAds2(Activity activity, Consumer<Boolean> callback) {
-		
-		// create FirebaseRemoteConfig
-		FirebaseRemoteConfig remoteConfig = FirebaseRemoteConfig.getInstance();
-		
-		// init firebase remote config
-		remoteConfig.setConfigSettingsAsync(new FirebaseRemoteConfigSettings.Builder()
-													.setMinimumFetchIntervalInSeconds(0)
-													.build());
-		// fetch data from FirebaseRemoteConfig
-		remoteConfig.fetchAndActivate().addOnSuccessListener(activity, success -> {
-			boolean showAd = remoteConfig.getBoolean("show_ads");
-			callback.accept(showAd);
-		});
-	}
 
-	public static void displayAds(Context context, Consumer<Boolean> callback) {
-		boolean showAd = SharedPrefsHelper.getBooleanPrefs(context, SharedPrefsHelper.Key.DISPLAY_ADS.name());
-		callback.accept(showAd);
-	}
+
+
 	
 	public static void openChromeTabs(Activity activity, String url) {
 		

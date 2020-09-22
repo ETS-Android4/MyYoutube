@@ -39,7 +39,4 @@
 
     </com.google.android.material.tabs.TabLayout>
 
-    <!-- Banner Ad -->
-    <include layout="@layout/banner_ad_3" />
-
 </LinearLayout>
