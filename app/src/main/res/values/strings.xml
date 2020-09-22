@@ -131,7 +131,7 @@
     <string name="popup_tips_key">popup_tips_key</string>
     <string name="popup_tips_title">Popup penceresi</string>
     <string name="popup_tips_summary">Pop-up penceresine 3sn basılı tutarak boyutunu değiştirebilirsiniz.</string>
-    <string name="popup_remember_size_pos_title">Pop-up boyutunu ve yeri</string>
+    <string name="popup_remember_size_pos_title">Pop-up boyutu ve yeri</string>
     <string name="popup_remember_size_pos_summary">En son Pop-up boyutunu ve yerini kaydet</string>
     <string name="metadata_cache_wipe_title">Çerez verilerini sil</string>
     <string name="metadata_cache_wipe_summary">Kayıtlı olan bütün çerez verilerini silerek uygulamayı tertemiz hale getir</string>
