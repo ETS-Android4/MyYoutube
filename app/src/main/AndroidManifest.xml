@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="io.awesome.gagtube">
+    package="io.awesome.gultube">
 
     <!-- system -->
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
@@ -21,7 +21,7 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
-        android:name=".App"
+        android:name="io.awesome.gultube.App"
         android:allowBackup="false"
         android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
@@ -35,7 +35,7 @@
         tools:targetApi="q">
 
         <activity
-            android:name=".activities.SplashActivity"
+            android:name="io.awesome.gultube.activities.SplashActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity">
@@ -47,24 +47,24 @@
         </activity>
 
         <activity
-            android:name=".activities.MainActivity"
+            android:name="io.awesome.gultube.activities.MainActivity"
             android:launchMode="standard"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
 
         <activity
-            android:name=".player.PopupVideoPlayerActivity"
+            android:name="io.awesome.gultube.player.PopupVideoPlayerActivity"
             android:label="@string/title_activity_popup_player"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
 
         <service
-            android:name=".player.PopupVideoPlayer"
+            android:name="io.awesome.gultube.player.PopupVideoPlayer"
             android:exported="false" />
 
         <activity
-            android:name=".player.MainVideoPlayer"
+            android:name="io.awesome.gultube.player.MainVideoPlayer"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
             android:label="@string/app_name"
             android:launchMode="singleTask"
@@ -72,18 +72,18 @@
             tools:ignore="LockedOrientationActivity" />
 
         <activity
-            android:name=".settings.SettingsActivity"
+            android:name="io.awesome.gultube.settings.SettingsActivity"
             android:label="@string/settings"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
 
         <activity
-            android:name=".activities.ExitActivity"
+            android:name="io.awesome.gultube.activities.ExitActivity"
             android:label="@string/general_error"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoDisplay"
             tools:ignore="LockedOrientationActivity" />
-        <activity android:name=".report.ErrorActivity" />
+        <activity android:name="io.awesome.gultube.report.ErrorActivity" />
 
         <!-- FileProvider -->
         <provider
@@ -96,7 +96,7 @@
                 android:resource="@xml/file_provider_paths" />
         </provider>
 
-        <service android:name=".util.chrometabs.KeepAliveService" />
+        <service android:name="io.awesome.gultube.util.chrometabs.KeepAliveService" />
 
         <meta-data
             android:name="io.fabric.ApiKey"
@@ -109,7 +109,7 @@
 
         <!-- Firebase Cloud Messaging -->
         <service
-            android:name="io.awesome.gagtube.notification.GFirebaseMessagingService"
+            android:name="io.awesome.gultube.notification.GFirebaseMessagingService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
@@ -117,29 +117,29 @@
         </service>
 
         <!-- Download -->
-        <service android:name=".download.service.DownloadManagerService" />
+        <service android:name="io.awesome.gultube.download.service.DownloadManagerService" />
         
         <activity
-            android:name=".download.ui.DownloadActivity"
+            android:name="io.awesome.gultube.download.ui.DownloadActivity"
             android:label="@string/app_name"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
 
         <activity
-            android:name=".local.history.HistoryActivity"
+            android:name="io.awesome.gultube.local.history.HistoryActivity"
             android:label="@string/title_activity_history"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
 
         <activity
-            android:name=".local.subscription.SubscriptionActivity"
+            android:name="io.awesome.gultube.local.subscription.SubscriptionActivity"
             android:label="@string/tab_subscriptions"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
 
         <activity
-            android:name=".activities.ReCaptchaActivity"
+            android:name="io.awesome.gultube.activities.ReCaptchaActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity"/>
 

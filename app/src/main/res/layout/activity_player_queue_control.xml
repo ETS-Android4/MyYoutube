@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     android:background="?attr/windowBackground"
     android:fitsSystemWindows="true"
-    tools:context="io.awesome.gagtube.player.ServicePlayerActivity">
+    tools:context="io.awesome.gultube.player.ServicePlayerActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar"

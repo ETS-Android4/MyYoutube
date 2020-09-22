@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:848456779025:android:2633765af747cb3e9af8b0",
         "android_client_info": {
-          "package_name": "com.android.protube"
+          "package_name": "com.android.gultube"
         }
       },
       "oauth_client": [
@@ -18,7 +18,7 @@
           "client_id": "848456779025-45kv3hjaf0l1h63910indf2t5e7ur31g.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.android.protube",
+            "package_name": "com.android.gultube",
             "certificate_hash": "1521d9411a8a6350242d03e966743ba76a867c94"
           }
         },

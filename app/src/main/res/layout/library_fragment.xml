@@ -40,7 +40,7 @@
                     android:paddingStart="4dp"
                     android:paddingEnd="4dp">
 
-                    <io.awesome.gagtube.util.view.SquareCardView
+                    <io.awesome.gultube.util.view.SquareCardView
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -60,7 +60,7 @@
                             android:paddingTop="8dp"
                             android:paddingBottom="8dp">
 
-                            <io.awesome.gagtube.util.view.SquaredImageView
+                            <io.awesome.gultube.util.view.SquaredImageView
                                 android:id="@+id/history_icon"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -86,9 +86,9 @@
 
                         </RelativeLayout>
 
-                    </io.awesome.gagtube.util.view.SquareCardView>
+                    </io.awesome.gultube.util.view.SquareCardView>
 
-                    <io.awesome.gagtube.util.view.SquareCardView
+                    <io.awesome.gultube.util.view.SquareCardView
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -108,7 +108,7 @@
                             android:paddingTop="8dp"
                             android:paddingBottom="8dp">
 
-                            <io.awesome.gagtube.util.view.SquaredImageView
+                            <io.awesome.gultube.util.view.SquaredImageView
                                 android:id="@+id/subscription_icon"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -134,9 +134,9 @@
 
                         </RelativeLayout>
 
-                    </io.awesome.gagtube.util.view.SquareCardView>
+                    </io.awesome.gultube.util.view.SquareCardView>
 
-                    <io.awesome.gagtube.util.view.SquareCardView
+                    <io.awesome.gultube.util.view.SquareCardView
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -156,7 +156,7 @@
                             android:paddingTop="8dp"
                             android:paddingBottom="8dp">
 
-                            <io.awesome.gagtube.util.view.SquaredImageView
+                            <io.awesome.gultube.util.view.SquaredImageView
                                 android:id="@+id/download_icon"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -182,7 +182,7 @@
 
                         </RelativeLayout>
 
-                    </io.awesome.gagtube.util.view.SquareCardView>
+                    </io.awesome.gultube.util.view.SquareCardView>
 
                 </LinearLayout>
 
