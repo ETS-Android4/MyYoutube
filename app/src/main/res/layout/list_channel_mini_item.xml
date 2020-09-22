@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<io.awesome.gagtube.util.recyclerview.SwipeRevealLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/swipe_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?attr/selectableItemBackground"
+    app:dragEdge="right"
+    app:mode="same_level">
+
+    <LinearLayout
+        android:id="@+id/unsubscribe_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingStart="@dimen/activity_horizontal_margin"
+        android:paddingEnd="@dimen/activity_horizontal_margin"
+        android:gravity="center"
+        android:foreground="?attr/selectableItemBackground"
+        android:background="@color/youtube_primary_color">
+
+        <ImageView
+            android:id="@+id/icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_unsubscribe_white_24dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/unsubscribed"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/itemRoot"
+        android:layout_width="match_parent"
+        android:layout_height="122dp"
+        android:background="?attr/selectableItemBackground"
+        android:paddingLeft="16dp"
+        android:gravity="center_vertical"
+        android:paddingTop="8dp"
+        android:paddingRight="16dp"
+        android:paddingBottom="8dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/itemThumbnailView"
+            android:layout_width="98dp"
+            android:layout_height="98dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginEnd="@dimen/video_item_search_image_right_margin"
+            android:src="@drawable/user_default"/>
+
+        <TextView
+            android:id="@+id/itemTitleView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/itemThumbnailView"
+            android:ellipsize="end"
+            android:lines="1"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="@dimen/video_item_title_text_size"/>
+
+        <TextView
+            android:id="@+id/itemChannelDescriptionView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/itemTitleView"
+            android:layout_marginTop="4dp"
+            android:layout_toEndOf="@+id/itemThumbnailView"
+            android:ellipsize="end"
+            android:lines="2"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textSize="@dimen/video_item_upload_date_text_size"/>
+
+        <TextView
+            android:id="@+id/itemAdditionalDetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/itemThumbnailView"
+            android:layout_toEndOf="@+id/itemThumbnailView"
+            android:lines="1"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textSize="@dimen/video_item_upload_date_text_size" />
+
+    </RelativeLayout>
+
+</io.awesome.gagtube.util.recyclerview.SwipeRevealLayout>

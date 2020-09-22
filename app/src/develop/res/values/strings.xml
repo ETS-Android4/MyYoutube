@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- AdMob App Id -->
+    <string name="app_id">ca-app-pub-3940256099942544~3347511713</string>
+    <!-- Banner -->
+    <string name="banner_1">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="banner_2">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="banner_3">ca-app-pub-3940256099942544/6300978111</string>
+    <!-- Interstitial -->
+    <string name="interstitial_1">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="interstitial_2">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="interstitial_3">ca-app-pub-3940256099942544/1033173712</string>
+    <!-- Native -->
+    <string name="native_1">ca-app-pub-3940256099942544/2247696110</string>
+    <string name="native_2">ca-app-pub-3940256099942544/2247696110</string>
+    <string name="native_3">ca-app-pub-3940256099942544/2247696110</string>
+    <!-- Rewarded -->
+    <string name="rewarded">ca-app-pub-3940256099942544/5224354917</string>
+    
+</resources>

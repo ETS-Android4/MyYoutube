@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/itemRoot"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="?attr/selectableItemBackground"
+    android:padding="8dp">
+
+    <ImageView
+        android:id="@+id/itemThumbnailView"
+        android:layout_width="200dp"
+        android:layout_height="112.5dp"
+        android:layout_alignParentTop="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/no_image" />
+
+    <TextView
+        android:id="@+id/itemDurationView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@id/itemThumbnailView"
+        android:layout_alignBottom="@id/itemThumbnailView"
+        android:layout_marginEnd="@dimen/video_item_search_duration_margin"
+        android:layout_marginBottom="@dimen/video_item_search_duration_margin"
+        android:background="@drawable/duration_background"
+        android:paddingLeft="@dimen/video_item_search_duration_horizontal_padding"
+        android:paddingTop="@dimen/video_item_search_duration_vertical_padding"
+        android:paddingRight="@dimen/video_item_search_duration_horizontal_padding"
+        android:paddingBottom="@dimen/video_item_search_duration_vertical_padding"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@color/duration_text_color"
+        android:textSize="@dimen/video_item_duration_text_size"
+        tools:text="00:00" />
+
+    <TextView
+        android:id="@+id/itemVideoTitleView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/itemThumbnailView"
+        android:layout_alignStart="@+id/itemThumbnailView"
+        android:layout_alignEnd="@+id/itemThumbnailView"
+        android:layout_marginTop="4dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textAppearance="?android:attr/textAppearance"
+        android:textColor="@color/white"
+        android:textSize="@dimen/video_item_title_text_size"
+        tools:text="@string/example_video_title" />
+
+    <TextView
+        android:id="@+id/itemUploaderView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/itemVideoTitleView"
+        android:layout_alignStart="@+id/itemThumbnailView"
+        android:layout_alignEnd="@+id/itemThumbnailView"
+        android:layout_marginTop="4dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@color/white"
+        android:textSize="@dimen/video_item_uploader_text_size"
+        tools:text="@string/example_channel_title" />
+
+</RelativeLayout>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Light -->
+    <color name="light_youtube_primary_color">@color/youtube_primary_color</color>
+    <color name="light_youtube_dark_color">@color/youtube_dark_color</color>
+    <color name="light_youtube_accent_color">#747474</color>
+    <color name="light_bottom_navigation_background_color">@color/md_grey_100</color>
+    <color name="light_bottom_navigation_accent_color">@color/youtube_primary_color</color>
+
+    <!-- Dark -->
+    <color name="dark_youtube_primary_color">#282828</color>
+    <color name="dark_youtube_dark_color">#222222</color>
+    <color name="dark_youtube_accent_color">@color/md_white_1000</color>
+    <color name="dark_bottom_navigation_background_color">#282828</color>
+    <color name="dark_bottom_navigation_accent_color">@color/md_white_1000</color>
+
+</resources>

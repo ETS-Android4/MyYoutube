@@ -1,0 +1,327 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<resources>
+    <string name="app_name" translatable="false">ProTube</string>
+
+    <!-- Theme -->
+    <string name="theme_title">Theme</string>
+    <string name="light_theme_title">Light theme</string>
+    <string name="dark_theme_title">Dark theme</string>
+
+    <!-- Notification -->
+    <string name="notification_channel_id" translatable="false">ProTube</string>
+    <string name="notification_channel_name">Popup Player</string>
+    <string name="notification_channel_description">Notifications for Popup Player</string>
+    <string name="general_channel_name">General</string>
+
+    <!-- Subscribe -->
+    <string name="subscribe_button_title">Subscribe</string>
+    <string name="subscribed_button_title">Subscribed</string>
+    <string name="unsubscribed">Unsubscribe</string>
+    <string name="subscription_change_failed">Unable to change subscription</string>
+    <string name="subscription_update_failed">Unable to update subscription</string>
+    <string name="tab_subscriptions">Subscription</string>
+
+    <!-- Count views -->
+    <string name="view_count_text">%1$s views</string>
+    <string name="upload_date_text">Published on %1$s</string>
+    <string name="short_thousand">K</string>
+    <string name="short_million">M</string>
+    <string name="short_billion">B</string>
+
+    <!--Zero don't get selected (in some languages) as it is not a "special case" for android-->
+    <string name="no_subscribers">No subscribers</string>
+    <plurals name="subscribers">
+        <item quantity="one">%s subscriber</item>
+        <item quantity="other">%s subscribers</item>
+    </plurals>
+
+    <string name="no_views">No views</string>
+    <plurals name="views">
+        <item quantity="one">%s view</item>
+        <item quantity="other">%s views</item>
+    </plurals>
+
+    <string name="no_videos">No videos</string>
+    <plurals name="videos">
+        <item quantity="one">%s video</item>
+        <item quantity="other">%s videos</item>
+    </plurals>
+
+    <!-- Downloads -->
+    <string name="charset_most_special_characters_value" translatable="false">[\\n\\r|\\?*&lt;":&gt;/']+</string>
+
+    <!-- History -->
+    <string name="title_activity_history">History</string>
+    <string name="delete_item_search_history">Do you want to delete this item from search history?</string>
+    <string name="delete_all_history_prompt">Are you sure you want to delete all items from history?</string>
+    <string name="title_recently_played">Recently Played</string>
+    <string name="title_most_played">Most Played</string>
+
+    <!-- Bottom Navigation Tabs -->
+    <string name="trending">Trending</string>
+    <string name="discover">Discover</string>
+    <string name="library">Library</string>
+
+    <!-- Categories -->
+    <string name="music">Music</string>
+    <string name="entertainment">Entertainment</string>
+    <string name="films">Films</string>
+    <string name="gaming">Gaming</string>
+    <string name="sports">Sports</string>
+    <string name="cars">Cars</string>
+    <string name="pets">Pets</string>
+
+    <!-- Play Queue -->
+    <string name="title_activity_popup_player">Popup Player</string>
+    <string name="play_queue_remove">Remove</string>
+    <string name="start_here_on_main">Play</string>
+
+    <!-- Main service -->
+    <string name="youtube" translatable="false">YouTube</string>
+
+    <!-- Local Playlist -->
+    <string name="new_playlist">Playlist</string>
+    <string name="create_new_playlist">Create New Playlist</string>
+    <string name="playlist_name_input">Playlist name</string>
+    <string name="append_playlist">Add to Playlist</string>
+    <string name="set_as_playlist_thumbnail">Set as Playlist Thumbnail</string>
+    <string name="bookmark_playlist">Add Playlist</string>
+    <string name="added_playlist_to_bookmark">Added Playlist to Library</string>
+    <string name="removed_playlist_from_bookmark">Removed the Playlist from Library</string>
+    <string name="delete_playlist_prompt">Do you want to delete this playlist?</string>
+    <string name="playlist_creation_success">Playlist created</string>
+    <string name="playlist_add_stream_success">Added to playlist</string>
+    <string name="playlist_thumbnail_change_success">Playlist thumbnail has been changed</string>
+
+    <!-- Players -->
+    <string name="caption_none">Captions</string>
+    <string name="caption_auto_generated">Auto-generated</string>
+    <string name="playback_speed_normal">Normal</string>
+
+    <!-- Limit mobile data usage  -->
+    <string name="limit_data_usage_none_description">No limit</string>
+    <string name="limit_mobile_data_usage_value" translatable="false">@string/limit_data_usage_none_key</string>
+    <string-array name="limit_data_usage_description_list">
+        <item>@string/limit_data_usage_none_description</item>
+        <item>1080p60</item>
+        <item>1080p</item>
+        <item>720p60</item>
+        <item>720p</item>
+        <item>480p</item>
+        <item>360p</item>
+        <item>240p</item>
+        <item>144p</item>
+    </string-array>
+
+    <!-- Example -->
+    <string name="example_video_title">ProTube Video Title</string>
+    <string name="example_channel_title">ProTube</string>
+
+    <!-- Update new version -->
+    <string name="new_version_message">You are using an older version of the app which might not function correctly.\n\nPlease update your app from the Google Play Store.</string>
+    <string name="new_version_update">Update Now</string>
+    <string name="new_version_later">Later</string>
+
+    <!-- Settings -->
+    <string name="settings">Settings</string>
+    <string name="default_resolution_title">Default video resolution</string>
+    <string name="default_popup_resolution_title">Default Popup resolution</string>
+    <string name="show_higher_resolutions_title">Show higher resolution</string>
+    <string name="show_higher_resolutions_summary">Only some devices support playing 2K/4K videos</string>
+    <string name="popup_tips_key">popup_tips_key</string>
+    <string name="popup_tips_title">Popup window</string>
+    <string name="popup_tips_summary">Long press the Popup window in three seconds to change the size</string>
+    <string name="popup_remember_size_pos_title">Save Popup size and position</string>
+    <string name="popup_remember_size_pos_summary">Save last size and position of Popup</string>
+    <string name="metadata_cache_wipe_title">Clear all cached</string>
+    <string name="metadata_cache_wipe_summary">Remove all cached data</string>
+    <string name="metadata_cache_wipe_complete_notice">All cached data deleted</string>
+    <string name="auto_queue_title">Autoplay next video</string>
+    <string name="auto_queue_summary">When you finish a video, another plays automatically</string>
+    <string name="show_search_suggestions_title">Search suggestions</string>
+    <string name="show_search_suggestions_summary">Show suggestions when searching</string>
+    <string name="enable_search_history_title">Search History</string>
+    <string name="enable_search_history_summary">Store search queries locally</string>
+    <string name="enable_watch_history_title">History &amp; Cache</string>
+    <string name="enable_watch_history_summary">Keep track of watched videos</string>
+    <string name="resume_on_audio_focus_gain_title">Resume on focus gain</string>
+    <string name="resume_on_audio_focus_gain_summary">Continue playing after interruptions (e.g. phone calls)</string>
+    <string name="clear_views_history_title">Clear watch history</string>
+    <string name="clear_views_history_summary">Clear watch history from devices</string>
+    <string name="delete_view_history_alert">Do you want to clear watch history?</string>
+    <string name="view_history_deleted">Watch history deleted.</string>
+    <string name="clear_search_history_title">Clear search history</string>
+    <string name="clear_search_history_summary">Clear history of search keywords</string>
+    <string name="delete_search_history_alert">Do you want to clear search history?</string>
+    <string name="search_history_deleted">Search history deleted.</string>
+    <string name="next_video_title">Up Next</string>
+    <string name="url_not_supported_toast">URL not supported</string>
+    <string name="settings_category_player_title">Popup Player</string>
+    <string name="settings_category_video_audio_title">Video &amp; Audio</string>
+    <string name="settings_category_history_title">History &amp; Cache</string>
+    <string name="popup_playing_toast">Play on Popup mode</string>
+    <string name="popup_playing_append">Added to Popup playlist</string>
+    <string name="content">Content</string>
+    <string name="duration_live">Live</string>
+    <string name="duration_live_button" translatable="false"> • Live</string>
+    <string name="all">All</string>
+    <string name="channel">Channel</string>
+    <string name="playlist">Playlist</string>
+    <string name="local_playlist">Local Playlists</string>
+    <string name="videos">Videos</string>
+    <string name="yes">Yes</string>
+    <string name="popup_resizing_indicator_title">Resizing</string>
+    <string name="best_resolution">Best resolution</string>
+    <string name="play_all">Play All</string>
+    <string name="switch_to_main">Play on Full-screen</string>
+    <string name="controls_popup_title">Popup</string>
+    <string name="setting_rate_me_now">Rate app</string>
+    <string name="setting_tell_your_friend">Tell your friend</string>
+    <string name="setting_feedback">Feedback</string>
+    <string name="title_activity_about">About</string>
+    <string name="title_version_name">Version</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- Common strings -->
+    <string name="minutes_ago">%d minutes ago</string>
+    <string name="hours_ago">%d hours ago</string>
+    <string name="days_ago">%d days ago</string>
+    <string name="months_ago">%d months ago</string>
+    <string name="thanks_for_your_supports">Thank you for your support!</string>
+    <string name="msg_nothing">Nothing in %s</string>
+    <string name="msg_no_apps">No apps can do perform this action</string>
+    <string name="autoplay">Autoplay</string>
+    <string name="dialog_exit_app_msg">Are you sure you want to exit?</string>
+    <string name="done">Done</string>
+    <string name="me">Me</string>
+    <string name="dialog_warning_title">Warning</string>
+    <string name="unknown_content">[Unknown]</string>
+    <string name="cancel">Cancel</string>
+    <string name="share">Share</string>
+    <string name="retry">Retry</string>
+    <string name="create">Create</string>
+    <string name="delete">Delete</string>
+    <string name="controls_add_to_playlist_title">Save</string>
+    <string name="confirm_title_dialog">Confirm</string>
+    <string name="the_app_is_under_maintenance">Application is under maintenance</string>
+    <string name="search">Search on Youtube</string>
+    <string name="share_dialog_title">Share with</string>
+    <string name="fragment_whats_new">What\'s New</string>
+    <string name="ok">OK</string>
+
+    <!-- Rating app -->
+    <string name="feedback_message">Please giving us some feedback to improve the app better:\n</string>
+    <string name="rating_message">Enjoying Floating Tube Player?</string>
+    <string name="rating_not_really">Not really</string>
+    <string name="rating_yes">Yes!</string>
+    <string name="rating_on_play_store">How about a rating on the Play Store, then?</string>
+    <string name="rating_no_thanks">No, thanks</string>
+    <string name="rating_ok_sure">OK, sure</string>
+    <string name="rating_giving_feedback">Would you mind giving us some feedback?</string>
+    
+    <!-- reCaptcha -->
+    <string name="title_activity_recaptcha">reCAPTCHA challenge</string>
+    <string name="subtitle_activity_recaptcha">Press \"Done\" when solved</string>
+    <string name="recaptcha_request_toast">reCAPTCHA challenge requested</string>
+
+    <!-- Msg -->
+    <string name="msg_popup_permission">This permission is needed to open on Popup mode</string>
+    <string name="msg_delete_successfully">Deleted successfully</string>
+    <string name="no_results">No videos were found</string>
+    <string name="no_keywords">No keywords</string>
+    <string name="no_videos_found">No videos</string>
+    <string name="no_playlists">No playlists</string>
+    <string name="empty_message_no_channel_subscription">You don\'t have\nSUBSCRIBE any channels yet.</string>
+
+    <!-- Error strings -->
+    <string name="sorry_string">We are working to update new features. Please use the application in the next hours. Thank you!</string>
+    <string name="error_snackbar_message">Sorry, some errors occurred.</string>
+    <string name="error_snackbar_action">REPORT</string>
+    <string name="general_error">Error</string>
+    <string name="network_error">No internet connection</string>
+    <string name="no_network">You are offline</string>
+    <string name="youtube_signature_decryption_error">Could not decrypt video URL signature</string>
+    <string name="parsing_error">Could not parse website</string>
+    <string name="content_not_available">Content not available</string>
+    <string name="app_ui_crash">App/UI crashed</string>
+    <string name="player_stream_failure">Could not play this video</string>
+    <string name="player_unrecoverable_failure">Unrecoverable player error occurred</string>
+    <string name="player_recoverable_failure">Recovering from player error</string>
+    <string name="content_not_supported">This content is not yet supported by ProTube.\n\nIt will hopefully be supported in a future version.</string>
+
+    <!-- download -->
+    <string name="download">Download</string>
+    <string name="permission_denied">Action denied by the system</string>
+    <string name="missions_header_finished">Completed</string>
+    <string name="missions_header_pending">Pending</string>
+    <string name="paused">paused</string>
+    <string name="queued">queued</string>
+    <string name="post_processing">post-processing</string>
+    <string name="recovering">recovering</string>
+    <string name="enqueue">Queue</string>
+    <string name="missing_file">File moved or deleted</string>
+    <string name="downloads_maximum_retry" translatable="false">downloads_max_retry</string>
+    <string name="downloads_maximum_retry_default" translatable="false">3</string>
+    <string name="downloads_cross_network" translatable="false">cross_network_downloads</string>
+    <string name="downloads_queue_limit" translatable="false">downloads_queue_limit</string>
+    <!-- download notifications -->
+    <string name="download_failed">Download failed</string>
+    <string name="download_finished">Download completed</string>
+    <string name="download_finished_more">%s downloads completed</string>
+    <!-- dialog about existing downloads -->
+    <string name="generate_unique_name">Generate unique name</string>
+    <string name="overwrite">Overwrite</string>
+    <string name="overwrite_unrelated_warning">A file with this name already exists</string>
+    <string name="overwrite_finished_warning">A downloaded file with this name already exists</string>
+    <string name="overwrite_failed">Cannot overwrite the file</string>
+    <string name="download_already_running">There is a download in progress with this name</string>
+    <string name="download_already_pending">There is a pending download with this name</string>
+    <!-- message dialog about download error -->
+    <string name="show_error">Show error</string>
+    <string name="error_file_creation">The file can not be created</string>
+    <string name="error_path_creation">The destination folder can not be created</string>
+    <string name="error_permission_denied">Permission denied by the system</string>
+    <string name="error_ssl_exception">Could not establish a secure connection</string>
+    <string name="error_unknown_host">Could not find the server</string>
+    <string name="error_connect_host">Can not connect to the server</string>
+    <string name="error_http_no_content">The server does not send data</string>
+    <string name="error_http_unsupported_range">The server does not accept multi-threaded downloads, retry with @string/msg_threads = 1</string>
+    <string name="error_http_not_found">Not found</string>
+    <string name="error_postprocessing_failed">Post-processing failed</string>
+    <string name="error_postprocessing_stopped">ProTube was closed while working on the file</string>
+    <string name="error_insufficient_storage">No space left on device</string>
+    <string name="error_progress_lost">Progress lost, because the file was deleted</string>
+    <string name="error_timeout">Connection timeout</string>
+    <string name="error_download_resource_gone">Cannot recover this download</string>
+    <string name="clear_download_history">Clear download history</string>
+    <string name="confirm_prompt">Do you want to delete all downloaded files?</string>
+    <string name="delete_downloaded_files">Delete downloaded files</string>
+    <string name="deleted_downloads">Deleted %1$d downloads</string>
+    <string name="stop">Stop</string>
+    <string name="max_retry_msg">Maximum retries</string>
+    <string name="max_retry_desc">Maximum number of attempts before canceling the download</string>
+    <string name="start_downloads">Start downloads</string>
+    <string name="pause_downloads">Pause downloads</string>
+    <string name="msg_wait">Please wait…</string>
+    <string name="no_streams_available_download">No streams available to download</string>
+    <string name="undo">Undo</string>
+    <string name="could_not_setup_download_menu">Could not setup download menu</string>
+    <string name="video">Video</string>
+    <string name="audio">Audio</string>
+    <string name="save_to_device">Save to device</string>
+    <string name="show_info">Show info</string>
+    <string name="file_name">File name</string>
+
+    <!-- Missions -->
+    <string name="start">Start</string>
+    <string name="pause">Pause</string>
+    <string name="view">Play</string>
+
+    <!-- Msg -->
+    <string name="msg_error">Error</string>
+    <string name="msg_running">ProTube Downloading</string>
+    <string name="msg_running_detail">Tap to see details</string>
+    <string name="toast_no_player">No app installed to play this file</string>
+    <string name="error_report_title">Error report</string>
+
+</resources>

@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "848456779025",
+    "firebase_url": "https://protube-a987b.firebaseio.com",
+    "project_id": "protube-a987b",
+    "storage_bucket": "protube-a987b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:848456779025:android:2633765af747cb3e9af8b0",
+        "android_client_info": {
+          "package_name": "com.android.protube"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "848456779025-45kv3hjaf0l1h63910indf2t5e7ur31g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.android.protube",
+            "certificate_hash": "1521d9411a8a6350242d03e966743ba76a867c94"
+          }
+        },
+        {
+          "client_id": "848456779025-f47kv71iipv1ius37p1n4bpg6k4lflfp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCpO9y5XU4bHY5bc6y0zslD4Ot85wFSR9E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "848456779025-f47kv71iipv1ius37p1n4bpg6k4lflfp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      },
+      "admob_app_id": "ca-app-pub-1433539314579780~9213356171"
+    }
+  ],
+  "configuration_version": "1"
+}

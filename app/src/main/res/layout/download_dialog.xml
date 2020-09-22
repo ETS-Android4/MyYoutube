@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingStart="8dp"
+    android:paddingEnd="8dp">
+
+    <View
+        android:id="@+id/ic_maximize"
+        android:layout_width="40dp"
+        android:layout_height="4dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/bg_dismiss"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/save_to_device"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="center"
+        android:text="@string/save_to_device"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:textAppearance="?android:attr/textAppearance"
+        android:textColor="?attr/colorSubtitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/ic_maximize" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/file_name_layout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:boxStrokeColor="@color/youtube_primary_color"
+        app:hintTextColor="@color/youtube_primary_color"
+        app:layout_constraintEnd_toEndOf="@+id/save_to_device"
+        app:layout_constraintStart_toStartOf="@+id/save_to_device"
+        app:layout_constraintTop_toBottomOf="@+id/save_to_device">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/file_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/file_name"
+            android:inputType="text"
+            android:maxLines="1"
+            android:saveEnabled="true" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <RadioGroup
+        android:id="@+id/video_audio_group"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        app:layout_constraintEnd_toEndOf="@+id/save_to_device"
+        app:layout_constraintStart_toStartOf="@+id/save_to_device"
+        app:layout_constraintTop_toBottomOf="@+id/file_name_layout">
+
+        <RadioButton
+            android:id="@+id/video_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:checked="true"
+            android:text="@string/video"
+            android:textSize="14sp"
+            android:theme="@style/RadioButtonTheme" />
+
+        <RadioButton
+            android:id="@+id/audio_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/audio"
+            android:textSize="14sp"
+            android:theme="@style/RadioButtonTheme" />
+
+    </RadioGroup>
+
+    <Spinner
+        android:id="@+id/quality_spinner"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:minWidth="150dp"
+        app:layout_constraintEnd_toEndOf="@+id/save_to_device"
+        app:layout_constraintStart_toStartOf="@+id/save_to_device"
+        app:layout_constraintTop_toBottomOf="@+id/video_audio_group"
+        tools:listitem="@layout/stream_quality_item" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_download"
+        style="@style/Widget.MaterialComponents.Button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/download"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        app:backgroundTint="@color/youtube_primary_color"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/save_to_device"
+        app:layout_constraintStart_toStartOf="@+id/save_to_device"
+        app:layout_constraintTop_toBottomOf="@+id/quality_spinner"
+        app:rippleColor="#520070ba" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

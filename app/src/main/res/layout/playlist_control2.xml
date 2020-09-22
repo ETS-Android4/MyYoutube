@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/playlist_control"
+    android:layout_width="match_parent"
+    android:layout_height="50dp">
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/playlist_ctrl_play_all_button"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="@string/play_all"
+        android:textColor="?attr/textColor"
+        android:textSize="12sp"
+        app:cornerRadius="0dp"
+        app:icon="?attr/play"
+        app:iconGravity="textStart"
+        app:iconPadding="4dp"
+        app:iconTint="?attr/iconColor"
+        app:rippleColor="#520070ba"
+        app:textAllCaps="true"/>
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="6dp"
+        android:background="?attr/separator_color"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/playlist_ctrl_play_popup_button"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="@string/controls_popup_title"
+        android:textColor="?attr/textColor"
+        android:textSize="12sp"
+        app:cornerRadius="0dp"
+        app:icon="?attr/popup"
+        app:iconGravity="textStart"
+        app:iconPadding="4dp"
+        app:iconTint="?attr/iconColor"
+        app:rippleColor="#520070ba"
+        app:textAllCaps="true"/>
+
+</LinearLayout>

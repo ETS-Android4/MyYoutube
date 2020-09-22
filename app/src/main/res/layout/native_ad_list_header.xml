@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- NativeAd -->
+<io.awesome.gagtube.adsmanager.nativead.NativeAdView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/template_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:native_ad_type="@layout/native_ad_medium"/>

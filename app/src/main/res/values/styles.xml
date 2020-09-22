@@ -1,0 +1,220 @@
+<resources>
+
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@android:color/transparent</item>
+        <item name="colorPrimaryDark">@android:color/transparent</item>
+        <item name="colorAccent">@android:color/transparent</item>
+        <item name="android:windowBackground">?attr/windowBackground</item>
+    </style>
+
+    <!-- Base themes -->
+    <style name="LightTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/light_youtube_primary_color</item>
+        <item name="colorPrimaryDark">@color/light_youtube_dark_color</item>
+        <item name="colorAccent">@color/light_youtube_accent_color</item>
+        <item name="android:windowBackground">@color/light_background_color</item>
+        <item name="windowBackground">@color/light_background_color</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="cardBackground">@color/light_card_background_color</item>
+        <item name="colorSubtitle">@color/md_grey_900</item>
+        <item name="toolbarColor">@color/youtube_primary_color</item>
+        <item name="backgroundAdColor">@color/md_blue_50</item>
+        <item name="textAdColor">@color/md_blue_800</item>
+        <item name="textColor">@color/youtube_primary_color</item>
+        <item name="iconColor">@color/youtube_primary_color</item>
+
+        <item name="like">@drawable/ic_like_dark_24dp</item>
+        <item name="dislike">@drawable/ic_dislike_dark_24dp</item>
+        <item name="audio">@drawable/ic_headset_dark_24dp</item>
+        <item name="download">@drawable/ic_download_dark_24dp</item>
+        <item name="share">@drawable/ic_share_dark_24dp</item>
+        <item name="search">@drawable/ic_search_dark_24dp</item>
+        <item name="close">@drawable/ic_close_dark_24dp</item>
+        <item name="popup">@drawable/ic_picture_in_picture_dark_24dp</item>
+        <item name="expand">@drawable/ic_arrow_down</item>
+        <item name="collapse">@drawable/ic_arrow_up</item>
+        <item name="volume_off">@drawable/ic_volume_off_dark_24dp</item>
+        <item name="history">@drawable/ic_history_color</item>
+        <item name="drag_handle">@drawable/ic_drag_handle_dark_24dp</item>
+        <item name="selected">@drawable/ic_fiber_manual_record_dark_24dp</item>
+        <item name="search_add">@drawable/ic_search_add_dark_24dp</item>
+        <item name="options">@drawable/ic_more_vert_dark_24dp</item>
+        <item name="option_download">@drawable/ic_more_vert_white_24dp</item>
+        <item name="play">@drawable/ic_play_arrow_dark_24dp</item>
+        <item name="settings">@drawable/ic_settings_dark_24dp</item>
+        <item name="ic_channel">@drawable/ic_subscriptions_color</item>
+        <item name="ic_playlist_add">@drawable/ic_playlist_add_dark_24dp</item>
+        <item name="ic_playlist_check">@drawable/ic_playlist_add_check_dark</item>
+        <item name="ic_switch">@drawable/ic_switch_main_player_dark_24dp</item>
+        <item name="rss">@drawable/ic_rss_dark_24dp</item>
+        <item name="back">@drawable/ic_back_dark_24dp</item>
+        <item name="trending">@drawable/ic_trending_dark_24dp</item>
+        <item name="library">@drawable/ic_library_music_dark_24dp</item>
+        <item name="discover">@drawable/ic_discover_dark_24dp</item>
+        <item name="rate">@drawable/ic_rate_dark_24dp</item>
+        <item name="policy">@drawable/ic_privacy_policy_dark_24dp</item>
+        <item name="feedback">@drawable/ic_feedback_dark_24dp</item>
+        <item name="quality">@drawable/ic_settings_player_dark_24dp</item>
+        <item name="caption">@drawable/ic_captions_dark_24dp</item>
+        <item name="playback_speed">@drawable/ic_playback_speed_dark_24dp</item>
+        <item name="done">@drawable/ic_done_dark_24dp</item>
+        <item name="info">@drawable/ic_info_dark_24dp</item>
+        <item name="ic_download">@drawable/ic_download_color</item>
+
+        <item name="separator_color">@color/light_separator_color</item>
+        <item name="contrast_background_color">@color/light_contrast_background_color</item>
+        <item name="queue_background_color">@color/light_queue_background_color</item>
+        <item name="selector_drawable">@drawable/light_selector</item>
+        <item name="colorControlHighlight">@color/light_ripple_color</item>
+    </style>
+
+    <style name="DarkTheme" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="colorPrimary">@color/light_youtube_primary_color</item>
+        <item name="colorPrimaryDark">@color/light_youtube_dark_color</item>
+        <item name="colorAccent">@color/dark_youtube_accent_color</item>
+        <item name="android:windowBackground">@color/dark_background_color</item>
+        <item name="windowBackground">@color/dark_background_color</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="cardBackground">@color/dark_card_background_color</item>
+        <item name="colorSubtitle">@color/white</item>
+        <item name="toolbarColor">@color/dark_background_color</item>
+        <item name="backgroundAdColor">#252b3a</item>
+        <item name="textAdColor">@color/md_blue_400</item>
+        <item name="textColor">@color/white</item>
+        <item name="iconColor">@color/white</item>
+
+        <item name="like">@drawable/ic_like_white_24dp</item>
+        <item name="dislike">@drawable/ic_dislike_white_24dp</item>
+        <item name="audio">@drawable/ic_headset_white_24dp</item>
+        <item name="download">@drawable/ic_download_white_24dp</item>
+        <item name="share">@drawable/ic_share_white_24dp</item>
+        <item name="search">@drawable/ic_search_white_24dp</item>
+        <item name="close">@drawable/ic_close_white_24dp</item>
+        <item name="popup">@drawable/ic_picture_in_picture_white_24dp</item>
+        <item name="expand">@drawable/ic_arrow_down</item>
+        <item name="collapse">@drawable/ic_arrow_up</item>
+        <item name="volume_off">@drawable/ic_volume_off_white_24dp</item>
+        <item name="history">@drawable/ic_history_white_24dp</item>
+        <item name="drag_handle">@drawable/ic_drag_handle_white_24dp</item>
+        <item name="selected">@drawable/ic_fiber_manual_record_white_24dp</item>
+        <item name="search_add">@drawable/ic_search_add_white_24dp</item>
+        <item name="options">@drawable/ic_more_vert_white_24dp</item>
+        <item name="option_download">@drawable/ic_more_vert_white_24dp</item>
+        <item name="play">@drawable/ic_play_arrow_white_24dp</item>
+        <item name="settings">@drawable/ic_settings_white_24dp</item>
+        <item name="ic_channel">@drawable/ic_subscriptions_white_24dp</item>
+        <item name="ic_playlist_add">@drawable/ic_playlist_add_white_24dp</item>
+        <item name="ic_playlist_check">@drawable/ic_playlist_add_check_white</item>
+        <item name="ic_switch">@drawable/ic_switch_main_player_white_24dp</item>
+        <item name="rss">@drawable/ic_rss_white_24dp</item>
+        <item name="back">@drawable/ic_back_white_24dp</item>
+        <item name="trending">@drawable/ic_trending_white_24dp</item>
+        <item name="library">@drawable/ic_library_music_white_24dp</item>
+        <item name="discover">@drawable/ic_discover_white_24dp</item>
+        <item name="rate">@drawable/ic_rate_white_24dp</item>
+        <item name="policy">@drawable/ic_privacy_policy_white_24dp</item>
+        <item name="feedback">@drawable/ic_feedback_white_24dp</item>
+        <item name="quality">@drawable/ic_settings_player_white_24dp</item>
+        <item name="caption">@drawable/ic_captions_white_24dp</item>
+        <item name="playback_speed">@drawable/ic_playback_speed_white_24dp</item>
+        <item name="done">@drawable/ic_done_white_24dp</item>
+        <item name="info">@drawable/ic_info_white_24dp</item>
+        <item name="ic_download">@drawable/ic_download_white_24dp</item>
+
+        <item name="separator_color">@color/dark_separator_color</item>
+        <item name="contrast_background_color">@color/dark_contrast_background_color</item>
+        <item name="queue_background_color">@color/dark_queue_background_color</item>
+        <item name="selector_drawable">@drawable/dark_selector</item>
+        <item name="colorControlHighlight">@color/dark_ripple_color</item>
+    </style>
+
+    <!-- The launcher theme. It sets the main window background to the launch_screen drawable -->
+    <style name="AppTheme.Launcher" parent="AppTheme">
+        <item name="android:windowBackground">@drawable/background_launcher</item>
+    </style>
+
+    <!-- Dialogs -->
+    <style name="LightDialogTheme" parent="Theme.MaterialComponents.Light.Dialog">
+        <item name="colorPrimary">@color/light_youtube_primary_color</item>
+        <item name="colorPrimaryDark">@color/light_youtube_dark_color</item>
+        <item name="colorAccent">@color/light_youtube_accent_color</item>
+        <item name="android:colorAccent">@color/light_youtube_accent_color</item>
+        <item name="android:windowBackground">@color/light_dialog_background_color</item>
+        <item name="windowBackground">@color/light_dialog_background_color</item>
+    </style>
+
+    <style name="DarkDialogTheme" parent="Theme.MaterialComponents.Dialog">
+        <item name="colorPrimary">@color/light_youtube_primary_color</item>
+        <item name="colorPrimaryDark">@color/light_youtube_dark_color</item>
+        <item name="colorAccent">@color/dark_youtube_accent_color</item>
+        <item name="android:colorAccent">@color/dark_youtube_accent_color</item>
+        <item name="android:windowBackground">@color/dark_dialog_background_color</item>
+        <item name="windowBackground">@color/dark_dialog_background_color</item>
+    </style>
+
+    <!-- Settings -->
+    <style name="LightSettingsTheme" parent="LightTheme">
+        <item name="colorAccent">@color/light_settings_accent_color</item>
+    </style>
+
+    <style name="DarkSettingsTheme" parent="DarkTheme">
+        <item name="colorAccent">@color/white</item>
+    </style>
+
+    <style name="Toolbar.Title" parent="Widget.MaterialComponents.Toolbar">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="subtitleTextColor">@color/white</item>
+    </style>
+
+    <style name="mPopupMenu" parent="@style/Widget.AppCompat.PopupMenu.Overflow">
+        <item name="android:dropDownHorizontalOffset">-6dp</item>
+        <item name="android:dropDownVerticalOffset">6dp</item>
+    </style>
+
+    <style name="SeekBarTheme" parent="Widget.AppCompat.SeekBar">
+        <item name="colorAccent">@color/youtube_primary_color</item>
+        <item name="colorControlNormal">@color/youtube_second_color</item>
+    </style>
+
+    <!-- set the rounded drawable as background to your bottom sheet -->
+    <style name="BottomSheet" parent="@style/Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/background_bottom_sheet_dialog</item>
+    </style>
+
+    <style name="DarkBottomSheetDialog" parent="@style/Theme.MaterialComponents.BottomSheetDialog">
+        <item name="android:windowIsFloating">true</item>
+        <item name="bottomSheetStyle">@style/BottomSheet</item>
+        <item name="colorAccent">@color/dark_youtube_accent_color</item>
+    </style>
+
+    <style name="LightBottomSheetDialog" parent="@style/Theme.MaterialComponents.Light.BottomSheetDialog">
+        <item name="android:windowIsFloating">true</item>
+        <item name="bottomSheetStyle">@style/BottomSheet</item>
+        <item name="colorAccent">@color/dark_youtube_accent_color</item>
+    </style>
+
+    <style name="RadioButtonTheme" parent="Widget.MaterialComponents.CompoundButton.RadioButton">
+        <item name="colorControlActivated">@color/youtube_primary_color</item>
+        <item name="colorControlNormal">#747474</item>
+    </style>
+
+    <style name="ProgressBarTheme" parent="Widget.AppCompat.ProgressBar">
+        <item name="android:colorAccent">@color/youtube_primary_color</item>
+        <item name="android:colorControlActivated">@color/youtube_primary_color</item>
+    </style>
+
+    <style name="SwitchTheme" parent="Widget.AppCompat.CompoundButton.Switch">
+        <item name="colorAccent">@color/youtube_primary_color</item>
+    </style>
+
+    <style name="RatingBarTheme" parent="Widget.AppCompat.RatingBar">
+        <item name="colorControlNormal">@color/dark</item>
+        <item name="colorControlActivated">@color/youtube_primary_color</item>
+    </style>
+
+</resources>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/channel_header_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?attr/windowBackground">
+
+    <RelativeLayout
+        android:id="@+id/channel_metadata"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true">
+
+        <ImageView
+            android:id="@+id/channel_banner_image"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:fitsSystemWindows="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/channel_banner" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/channel_avatar_view"
+            android:layout_width="@dimen/channel_avatar_size"
+            android:layout_height="@dimen/channel_avatar_size"
+            android:layout_alignTop="@id/channel_banner_image"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="50dp"
+            android:src="@drawable/user_default" />
+
+        <TextView
+            android:id="@+id/channel_title_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/channel_banner_image"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="8dp"
+            android:layout_toStartOf="@+id/channel_subscribe_button"
+            android:layout_toEndOf="@+id/channel_avatar_view"
+            android:ellipsize="end"
+            android:lines="1"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="@dimen/video_item_detail_title_text_size"
+            tools:text="@string/example_channel_title" />
+
+        <TextView
+            android:id="@+id/channel_subscriber_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/channel_title_view"
+            android:layout_alignStart="@+id/channel_title_view"
+            android:layout_alignEnd="@+id/channel_title_view"
+            android:ellipsize="end"
+            android:gravity="start|center"
+            android:lines="1"
+            android:textSize="@dimen/channel_subscribers_text_size"
+            android:visibility="gone"
+            tools:text="6,548,120 subscribers"
+            tools:visibility="visible" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/channel_subscribe_button"
+            style="@style/Widget.MaterialComponents.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/channel_banner_image"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="center_vertical|end"
+            android:layout_marginEnd="4dp"
+            android:text="@string/subscribe_button_title"
+            android:textAllCaps="true"
+            android:textSize="@dimen/channel_rss_title_size"
+            android:visibility="gone"
+            app:backgroundTint="@color/youtube_primary_color"
+            app:icon="@drawable/ic_subscriptions_white_24dp"
+            app:iconGravity="end"
+            app:iconPadding="6dp"
+            app:iconSize="18dp"
+            app:iconTint="@color/white"
+            app:rippleColor="#520070ba"
+            tools:visibility="visible" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/channel_metadata"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true">
+
+        <include layout="@layout/playlist_control2" />
+
+    </LinearLayout>
+
+</RelativeLayout>

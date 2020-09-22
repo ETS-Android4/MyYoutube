@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources translatable="false">
+    <string name="current_service_key" translatable="false">service</string>
+    <string name="default_service_value" translatable="false">@string/youtube</string>
+
+    <!-- Key values -->
+    <string name="download_path_video_key" translatable="false">download_path_video</string>
+    <string name="download_path_audio_key" translatable="false">download_path_audio</string>
+
+    <string name="use_external_video_player_key" translatable="false">use_external_video_player</string>
+    <string name="use_external_audio_player_key" translatable="false">use_external_audio_player</string>
+    <string name="autoplay_through_intent_key" translatable="false">autoplay_through_intent</string>
+
+    <string name="resume_on_audio_focus_gain_key" translatable="false">resume_on_audio_focus_gain</string>
+    <string name="popup_remember_size_pos_key" translatable="false">popup_remember_size_pos_key</string>
+    <string name="auto_queue_key" translatable="false">auto_queue_key</string>
+
+    <string name="minimize_on_exit_key" translatable="false">minimize_on_exit_key</string>
+    <string name="minimize_on_exit_none_key" translatable="false">minimize_on_exit_none_key</string>
+    <string name="minimize_on_exit_background_key" translatable="false">minimize_on_exit_background_key</string>
+    <string name="minimize_on_exit_popup_key" translatable="false">minimize_on_exit_popup_key</string>
+    
+    <string name="default_resolution_key" translatable="false">default_resolution</string>
+    <string name="default_resolution_value" translatable="false">720p</string>
+    <string name="show_higher_resolutions_key" translatable="false">show_higher_resolutions</string>
+    <string name="default_popup_resolution_key" translatable="false">default_popup_resolution</string>
+    <string name="default_popup_resolution_value" translatable="false">480p</string>
+    <string name="best_resolution_key" translatable="false">best_resolution</string>
+
+    <string-array name="resolution_list_values" translatable="false">
+        <item>@string/best_resolution_key</item>
+        <item>1080p60</item>
+        <item>1080p</item>
+        <item>720p60</item>
+        <item>720p</item>
+        <item>480p</item>
+        <item>360p</item>
+        <item>240p</item>
+        <item>144p</item>
+    </string-array>
+    <string-array name="resolution_list_description" translatable="false">
+        <item>@string/best_resolution</item>
+        <item>1080p60</item>
+        <item>1080p</item>
+        <item>720p60</item>
+        <item>720p</item>
+        <item>480p</item>
+        <item>360p</item>
+        <item>240p</item>
+        <item>144p</item>
+    </string-array>
+
+    <string name="video_mp4_key" translatable="false">video_mp4</string>
+    <string name="video_webm_key" translatable="false">video_webm</string>
+    <string name="video_3gp_key" translatable="false">video_3gp</string>
+    <string name="default_video_format_key" translatable="false">default_video_format</string>
+    <string name="default_video_format_value" translatable="false">@string/video_mp4_key</string>
+
+    <string name="default_audio_format_key" translatable="false">default_audio_format</string>
+    <string name="default_audio_format_value" translatable="false">@string/audio_m4a_key</string>
+    <string name="audio_m4a_key" translatable="false">audio_m4a</string>
+    <string name="audio_webm_key" translatable="false">audio_webm</string>
+    <string name="last_orientation_landscape_key" translatable="false">last_orientation_landscape_key</string>
+
+    <!-- THEMES -->
+    <string name="theme_key" translatable="false">theme</string>
+    <string name="light_theme_key" translatable="false">light_theme</string>
+    <string name="dark_theme_key" translatable="false">dark_theme</string>
+    <string name="default_theme_value" translatable="false">@string/light_theme_key</string>
+    <string-array name="theme_values_list" translatable="false">
+        <item>@string/light_theme_key</item>
+        <item>@string/dark_theme_key</item>
+    </string-array>
+    <string-array name="theme_description_list" translatable="false">
+        <item>@string/light_theme_title</item>
+        <item>@string/dark_theme_title</item>
+    </string-array>
+
+    <!-- Content & History -->
+    <string name="show_search_suggestions_key" translatable="false">show_search_suggestions</string>
+    <string name="enable_search_history_key" translatable="false">enable_search_history</string>
+    <string name="enable_watch_history_key" translatable="false">enable_watch_history</string>
+
+    <string name="metadata_cache_wipe_key" translatable="false">cache_wipe_key</string>
+    <string name="clear_views_history_key" translatable="false">clear_play_history</string>
+    <string name="clear_search_history_key" translatable="false">clear_search_history</string>
+    <string name="youtube_restricted_mode_enabled" translatable="false">youtube_restricted_mode_enabled</string>
+
+    <!-- FileName Downloads  -->
+    <string name="settings_file_charset_key" translatable="false">file_rename</string>
+    <string name="settings_file_replacement_character_key" translatable="false">file_replacement_character</string>
+    <string name="default_file_charset_value" translatable="false">@string/charset_most_special_characters_value</string>
+    <string name="charset_letters_and_digits_value" translatable="false">CHARSET_LETTERS_AND_DIGITS</string>
+    <string name="charset_most_special_value" translatable="false">CHARSET_MOST_SPECIAL</string>
+
+    <!-- Preferred action on open (open from external app) -->
+    <string name="preferred_open_action_key" translatable="false">preferred_open_action_key</string>
+    <string name="preferred_open_action_default" translatable="false">@string/always_ask_open_action_key</string>
+    <string name="preferred_open_action_last_selected_key" translatable="false">preferred_open_action_last_selected</string>
+
+    <string name="show_info_key" translatable="false">show_info</string>
+    <string name="video_player_key" translatable="false">video_player</string>
+    <string name="background_player_key" translatable="false">background_player</string>
+    <string name="popup_player_key" translatable="false">popup_player</string>
+    <string name="download_key" translatable="false">download</string>
+    <string name="always_ask_open_action_key" translatable="false">always_ask_player</string>
+
+    <string-array name="preferred_open_action_values_list" translatable="false">
+        <item>@string/show_info_key</item>
+        <item>@string/video_player_key</item>
+        <item>@string/background_player_key</item>
+        <item>@string/popup_player_key</item>
+        <item>@string/download_key</item>
+        <item>@string/always_ask_open_action_key</item>
+    </string-array>
+
+    <!-- Limit mobile data usage  -->
+    <string name="limit_mobile_data_usage_key" translatable="false">limit_mobile_data_usage</string>
+    <string name="limit_data_usage_none_key" translatable="false">limit_data_usage_none</string>
+
+    <!--About-->
+    <string name="rate_me_now" translatable="false">rate_me_now</string>
+    <string name="tell_your_friend" translatable="false">tell_your_friend</string>
+    <string name="feedback" translatable="false">feedback</string>
+    <string name="privacy_policy" translatable="false">privacy_policy</string>
+    <string name="version_name" translatable="false">version_name</string>
+    
+    <!-- reCaptcha -->
+    <string name="recaptcha_cookies_key" translatable="false">recaptcha_cookies_key</string>
+</resources>

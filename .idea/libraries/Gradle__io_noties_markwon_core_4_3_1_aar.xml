@@ -1,0 +1,18 @@
+<component name="libraryTable">
+  <library name="Gradle: io.noties.markwon:core:4.3.1@aar">
+    <ANNOTATIONS>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/764f08d09472b72b944d40882bd34fc8/jetified-core-4.3.1/annotations.zip!/" />
+    </ANNOTATIONS>
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/764f08d09472b72b944d40882bd34fc8/jetified-core-4.3.1/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/764f08d09472b72b944d40882bd34fc8/jetified-core-4.3.1/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/764f08d09472b72b944d40882bd34fc8/jetified-core-4.3.1/res" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.noties.markwon/core/4.3.1/b2d3a60cd5803680a2be6ad0da4e7545f9424603/core-4.3.1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.noties.markwon/core/4.3.1/9ca30f18e683a9b0180a93d2c1f496ef5663c3a3/core-4.3.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

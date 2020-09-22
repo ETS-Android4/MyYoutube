@@ -1,0 +1,18 @@
+<component name="libraryTable">
+  <library name="Gradle: io.noties.markwon:linkify:4.3.1@aar">
+    <ANNOTATIONS>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/55ca42d851da202e7183272d534c1e30/jetified-linkify-4.3.1/annotations.zip!/" />
+    </ANNOTATIONS>
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/55ca42d851da202e7183272d534c1e30/jetified-linkify-4.3.1/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/55ca42d851da202e7183272d534c1e30/jetified-linkify-4.3.1/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/55ca42d851da202e7183272d534c1e30/jetified-linkify-4.3.1/res" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.noties.markwon/linkify/4.3.1/b6625a9e6ddcd2659e026a2a4bcf3e36f5e25231/linkify-4.3.1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.noties.markwon/linkify/4.3.1/c12adf382e18e5663cd21a0058202e1b09a9d963/linkify-4.3.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

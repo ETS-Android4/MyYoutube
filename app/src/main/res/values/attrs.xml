@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--TODO: preffix these with "ic_"-->
+    <attr name="like" format="reference" />
+    <attr name="dislike" format="reference" />
+    <attr name="audio" format="reference" />
+    <attr name="download" format="reference" />
+    <attr name="share" format="reference" />
+    <attr name="search" format="reference" />
+    <attr name="close" format="reference" />
+    <attr name="popup" format="reference" />
+    <attr name="expand" format="reference" />
+    <attr name="collapse" format="reference" />
+    <attr name="volume_off" format="reference" />
+    <attr name="clear_history" format="reference" />
+    <attr name="history" format="reference" />
+    <attr name="drag_handle" format="reference" />
+    <attr name="selected" format="reference" />
+    <attr name="search_add" format="reference" />
+    <attr name="options" format="reference" />
+    <attr name="play" format="reference" />
+    <attr name="settings" format="reference" />
+    <attr name="ic_hot" format="reference" />
+    <attr name="ic_channel" format="reference" />
+    <attr name="ic_playlist_add" format="reference" />
+    <attr name="ic_playlist_check" format="reference" />
+    <attr name="ic_switch" format="reference" />
+    <attr name="rss" format="reference" />
+    <attr name="back" format="reference" />
+    <attr name="trending" format="reference" />
+    <attr name="option_download" format="reference" />
+    <attr name="library" format="reference" />
+    <attr name="discover" format="reference" />
+    <attr name="policy" format="reference" />
+    <attr name="rate" format="reference" />
+    <attr name="feedback" format="reference" />
+    <attr name="quality" format="reference" />
+    <attr name="caption" format="reference" />
+    <attr name="playback_speed" format="reference" />
+    <attr name="done" format="reference" />
+    <attr name="queue" format="reference" />
+    <attr name="info" format="reference" />
+    <attr name="ic_download" format="reference" />
+
+    <!-- Can't refer to colors directly into drawable's xml-->
+    <attr name="selector_drawable" format="reference" />
+
+    <attr name="separator_color" format="color" />
+    <attr name="queue_background_color" format="color" />
+    <attr name="contrast_background_color" format="color" />
+    <attr name="windowBackground" format="color" />
+    <attr name="colorPrimary" format="color" />
+    <attr name="cardBackground" format="color" />
+    <attr name="colorSubtitle" format="color" />
+    <attr name="segmentColor" format="color" />
+    <attr name="toolbarColor" format="color" />
+    <attr name="backgroundAdColor" format="color" />
+    <attr name="textAdColor" format="color" />
+    <attr name="textColor" format="color" />
+    <attr name="iconColor" format="color" />
+
+    <!-- SwipeRevealLayout -->
+    <declare-styleable name="SwipeRevealLayout">
+        <attr name="dragEdge">
+            <flag name="left" value="1" />
+            <flag name="right" value="2" />
+            <flag name="top" value="4" />
+            <flag name="bottom" value="8" />
+        </attr>
+
+        <attr name="mode">
+            <enum name="normal" value="0" />
+            <enum name="same_level" value="1" />
+        </attr>
+
+        <attr name="flingVelocity" format="integer" />
+        <attr name="minDistRequestDisallowParent" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="NativeAdView">
+        <attr name="native_ad_type" format="reference"/>
+    </declare-styleable>
+
+</resources>
